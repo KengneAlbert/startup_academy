@@ -10,10 +10,14 @@ import {
   Calendar,
   User
 } from 'lucide-react';
+import BookDetail from './BookDetail';
+import BookReader from './BookReader';
 
 const LibraryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentView, setCurrentView] = useState<'list' | 'detail' | 'reader'>('list');
+  const [selectedBookId, setSelectedBookId] = useState<string | null>(null);
 
   const books = [
     {
@@ -158,6 +162,41 @@ const LibraryPage: React.FC = () => {
     }
   };
 
+  const handleBookClick = (bookId: string) => {
+    setSelectedBookId(bookId);
+    setCurrentView('detail');
+  };
+
+  const handleReadBook = (bookId: string) => {
+    setSelectedBookId(bookId);
+    setCurrentView('reader');
+  };
+
+  const handleBackToList = () => {
+    setCurrentView('list');
+    setSelectedBookId(null);
+  };
+
+  // Render different views
+  if (currentView === 'detail' && selectedBookId) {
+    return (
+      <BookDetail 
+        bookId={selectedBookId} 
+        onBack={handleBackToList}
+        onRead={handleReadBook}
+      />
+    );
+  }
+
+  if (currentView === 'reader' && selectedBookId) {
+    return (
+      <BookReader 
+        bookId={selectedBookId}
+        onBack={handleBackToList}
+      />
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8 animate-fade-in">
       {/* Header */}
@@ -267,7 +306,10 @@ const LibraryPage: React.FC = () => {
                   <Download className="h-4 w-4" />
                   <span>Télécharger</span>
                 </button>
-                <button className="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105">
+                <button 
+                  onClick={() => handleBookClick(book.id.toString())}
+                  className="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105"
+                >
                   <Eye className="h-4 w-4" />
                 </button>
               </div>
