@@ -1,39 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  ArrowLeft, 
-  ChevronLeft, 
-  ChevronRight, 
-  ZoomIn, 
-  ZoomOut, 
-  RotateCw, 
-  Download, 
-  Bookmark, 
-  Search, 
-  Settings, 
-  Maximize, 
-  Minimize, 
-  Sun, 
-  Moon, 
-  Type, 
-  Palette, 
-  Volume2, 
-  VolumeX, 
-  Play, 
-  Pause, 
-  SkipBack, 
-  SkipForward,
-  Menu,
-  X,
-  Highlight,
-  MessageCircle,
-  Share2,
-  FileText,
-  Eye,
-  Clock,
-  BookOpen,
-  Target,
-  Quote
-} from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCw, Download, Bookmark, Search, Settings, Maximize, Minimize, Sun, Moon, Type, Palette, Volume2, VolumeX, Play, Pause, SkipBack, SkipForward, Menu, X, Highlighter as Highlight, MessageCircle, Share2, FileText, Eye, Clock, BookOpen, Target, Quote } from 'lucide-react';
 
 interface BookReaderProps {
   bookId: string;

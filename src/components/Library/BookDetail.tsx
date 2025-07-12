@@ -1,37 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  ArrowLeft, 
-  Download, 
-  Eye, 
-  Star, 
-  Calendar, 
-  User, 
-  BookOpen, 
-  Heart, 
-  Share2, 
-  MessageCircle,
-  ExternalLink,
-  FileText,
-  Clock,
-  Award,
-  TrendingUp,
-  Users,
-  Bookmark,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Settings,
-  ChevronLeft,
-  ChevronRight,
-  Search,
-  Highlight,
-  Quote,
-  Tag,
-  Globe,
-  Printer,
-  Mail
-} from 'lucide-react';
+import { ArrowLeft, Download, Eye, Star, Calendar, User, BookOpen, Heart, Share2, MessageCircle, ExternalLink, FileText, Clock, Award, TrendingUp, Users, Bookmark, Play, Pause, Volume2, VolumeX, Settings, ChevronLeft, ChevronRight, Search, Highlighter as Highlight, Quote, Tag, Globe, Printer, Mail } from 'lucide-react';
 
 interface BookDetailProps {
   bookId: string;
