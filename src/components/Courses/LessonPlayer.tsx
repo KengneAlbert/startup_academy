@@ -1,28 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX, 
-  Maximize, 
-  Settings, 
-  SkipBack, 
-  SkipForward,
-  ArrowLeft,
-  CheckCircle,
-  Clock,
-  BookOpen,
-  Download,
-  MessageCircle,
-  ThumbsUp,
-  Share2,
-  ChevronLeft,
-  ChevronRight,
-  FileText,
-  Quiz,
-  Code,
-  Lightbulb
-} from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize, Settings, SkipBack, SkipForward, ArrowLeft, CheckCircle, Clock, BookOpen, Download, MessageCircle, ThumbsUp, Share2, ChevronLeft, ChevronRight, FileText, Pizza as Quiz, Code, Lightbulb } from 'lucide-react';
 
 interface LessonPlayerProps {
   courseId: string;

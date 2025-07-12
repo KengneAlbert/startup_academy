@@ -1,38 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Play, 
-  Clock, 
-  Users, 
-  Star, 
-  BookOpen, 
-  CheckCircle, 
-  Lock,
-  Download,
-  Share2,
-  Heart,
-  MessageCircle,
-  ArrowLeft,
-  ChevronRight,
-  Award,
-  Target,
-  TrendingUp,
-  User,
-  Calendar,
-  Globe,
-  FileText,
-  Video,
-  Quiz,
-  Code,
-  Lightbulb
-} from 'lucide-react';
+import { Play, Clock, Users, Star, BookOpen, CheckCircle, Lock, Download, Share2, Heart, MessageCircle, ArrowLeft, ChevronRight, Award, Target, TrendingUp, User, Calendar, Globe, FileText, Video, Pizza as Quiz, Code, Lightbulb } from 'lucide-react';
 
 interface CourseDetailProps {
   courseId: string;
   onBack: () => void;
-  onLessonClick?: (courseId: string, lessonId: string) => void;
 }
 
-const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonClick }) => {
+const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [completedLessons, setCompletedLessons] = useState<Set<number>>(new Set([1, 2, 3]));
 
@@ -343,10 +317,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
 
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 lg:ml-6">
               {course.enrolled ? (
-                <button 
-                  onClick={() => onLessonClick?.(courseId, '1')}
-                  className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 flex items-center justify-center space-x-2 shadow-soft hover:shadow-medium transform hover:scale-105"
-                >
+                <button className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 flex items-center justify-center space-x-2 shadow-soft hover:shadow-medium transform hover:scale-105">
                   <Play className="h-5 w-5" />
                   <span>Continuer la formation</span>
                 </button>
@@ -549,10 +520,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                           
                           <div className="flex-shrink-0">
                             {!isLocked && (
-                              <button 
-                                onClick={() => onLessonClick?.(courseId, lesson.id.toString())}
-                                className="p-2 text-gray-400 hover:text-primary-600 rounded-lg transition-colors"
-                              >
+                              <button className="p-2 text-gray-400 hover:text-primary-600 rounded-lg transition-colors">
                                 <Play className="h-4 w-4" />
                               </button>
                             )}
