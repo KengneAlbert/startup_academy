@@ -11,11 +11,16 @@ import {
   Award,
   TrendingUp
 } from 'lucide-react';
+import CourseDetail from './CourseDetail';
+import LessonPlayer from './LessonPlayer';
 
 const CoursesPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedLevel, setSelectedLevel] = useState('all');
+  const [currentView, setCurrentView] = useState<'list' | 'detail' | 'lesson'>('list');
+  const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
+  const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
 
   const courses = [
     {
@@ -158,6 +163,49 @@ const CoursesPage: React.FC = () => {
     }
   };
 
+  const handleCourseClick = (courseId: string) => {
+    setSelectedCourseId(courseId);
+    setCurrentView('detail');
+  };
+
+  const handleLessonClick = (courseId: string, lessonId: string) => {
+    setSelectedCourseId(courseId);
+    setSelectedLessonId(lessonId);
+    setCurrentView('lesson');
+  };
+
+  const handleBackToList = () => {
+    setCurrentView('list');
+    setSelectedCourseId(null);
+    setSelectedLessonId(null);
+  };
+
+  const handleBackToCourse = () => {
+    setCurrentView('detail');
+    setSelectedLessonId(null);
+  };
+
+  // Render different views
+  if (currentView === 'detail' && selectedCourseId) {
+    return (
+      <CourseDetail 
+        courseId={selectedCourseId} 
+        onBack={handleBackToList}
+        onLessonClick={handleLessonClick}
+      />
+    );
+  }
+
+  if (currentView === 'lesson' && selectedCourseId && selectedLessonId) {
+    return (
+      <LessonPlayer 
+        courseId={selectedCourseId}
+        lessonId={selectedLessonId}
+        onBack={handleBackToCourse}
+      />
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8 animate-fade-in">
       {/* Header */}
@@ -297,7 +345,9 @@ const CoursesPage: React.FC = () => {
                 </div>
               )}
 
-              <button className={`w-full py-3 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2 shadow-soft hover:shadow-medium transform hover:scale-105 ${
+              <button 
+                onClick={() => handleCourseClick(course.id.toString())}
+                className={`w-full py-3 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2 shadow-soft hover:shadow-medium transform hover:scale-105 ${
                 course.enrolled
                   ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800'
                   : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:from-gray-200 hover:to-gray-300'
@@ -305,8 +355,8 @@ const CoursesPage: React.FC = () => {
                 <Play className="h-4 w-4" />
                 <span>
                   {course.enrolled
-                    ? (course.progress > 0 ? 'Continuer' : 'Commencer')
-                    : 'S\'inscrire'
+                    ? (course.progress > 0 ? 'Continuer' : 'Voir le cours')
+                    : 'Voir le cours'
                   }
                 </span>
               </button>
