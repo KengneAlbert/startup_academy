@@ -11,7 +11,8 @@ import {
   Home,
   BookOpen,
   Users,
-  Library
+  Library,
+  Target
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -34,6 +35,7 @@ const TopBar: React.FC<TopBarProps> = ({
   const mobileNavigationItems = [
     { id: 'dashboard', label: 'Accueil', icon: Home },
     { id: 'courses', label: 'Formations', icon: BookOpen },
+    { id: 'projects', label: 'Projets', icon: Target },
     { id: 'feed', label: 'Actualités', icon: Plus },
     { id: 'messages', label: 'Messages', icon: MessageCircle },
     { id: 'profile', label: 'Profil', icon: User },

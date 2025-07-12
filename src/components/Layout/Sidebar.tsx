@@ -13,7 +13,8 @@ import {
   ChevronRight,
   Plus,
   Bell,
-  Search
+  Search,
+  Target
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -35,6 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const navigationItems = [
     { id: 'dashboard', label: 'Tableau de bord', icon: Home, category: 'main' },
     { id: 'courses', label: 'Formations', icon: BookOpen, category: 'main' },
+    { id: 'projects', label: 'Projets', icon: Target, category: 'main' },
     { id: 'library', label: 'Bibliothèque', icon: Library, category: 'main' },
     { id: 'members', label: 'Membres', icon: Users, category: 'main' },
     { id: 'feed', label: 'Actualités', icon: Plus, category: 'social' },

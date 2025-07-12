@@ -13,6 +13,7 @@ import MembersPage from './components/Members/MembersPage';
 import FeedPage from './components/Feed/FeedPage';
 import MessagesPage from './components/Messages/MessagesPage';
 import ProfilePage from './components/Profile/ProfilePage';
+import ProjectsPage from './components/Projects/ProjectsPage';
 
 const AppContent: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -50,6 +51,8 @@ const AppContent: React.FC = () => {
         return renderDashboard();
       case 'courses':
         return <CoursesPage />;
+      case 'projects':
+        return <ProjectsPage />;
       case 'library':
         return <LibraryPage />;
       case 'members':
