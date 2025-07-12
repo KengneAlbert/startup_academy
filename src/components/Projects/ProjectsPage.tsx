@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProjectDetail from './ProjectDetail';
 import { 
   Search, 
   Filter, 
@@ -32,6 +33,8 @@ const ProjectsPage: React.FC = () => {
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [selectedTech, setSelectedTech] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [currentView, setCurrentView] = useState<'list' | 'detail'>('list');
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
   const projects = [
     {
@@ -266,6 +269,26 @@ const ProjectsPage: React.FC = () => {
     
     return matchesSearch && matchesCategory && matchesStatus && matchesTech;
   });
+
+  const handleProjectClick = (projectId: string) => {
+    setSelectedProjectId(projectId);
+    setCurrentView('detail');
+  };
+
+  const handleBackToList = () => {
+    setCurrentView('list');
+    setSelectedProjectId(null);
+  };
+
+  // Render project detail view
+  if (currentView === 'detail' && selectedProjectId) {
+    return (
+      <ProjectDetail 
+        projectId={selectedProjectId} 
+        onBack={handleBackToList}
+      />
+    );
+  }
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -588,6 +611,12 @@ const ProjectsPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Click handler for entire card */}
+                <div 
+                  className="absolute inset-0 cursor-pointer"
+                  onClick={() => handleProjectClick(project.id.toString())}
+                />
               </>
             ) : (
               // List View
@@ -720,6 +749,12 @@ const ProjectsPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Click handler for entire card */}
+                <div 
+                  className="absolute inset-0 cursor-pointer"
+                  onClick={() => handleProjectClick(project.id.toString())}
+                />
               </div>
             )}
           </div>
