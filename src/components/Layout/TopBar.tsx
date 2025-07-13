@@ -126,6 +126,10 @@ const TopBar: React.FC<TopBarProps> = ({
             {/* Logo */}
             <div className="flex items-center space-x-2">
               <GraduationCap className="h-6 w-6 text-primary-900" />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
