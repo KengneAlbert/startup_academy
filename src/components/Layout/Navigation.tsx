@@ -41,9 +41,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
   const mobileNavigationItems = [
     { id: 'dashboard', label: 'Accueil', icon: Home },
     { id: 'courses', label: 'Formations', icon: BookOpen },
-    { id: 'feed', label: 'Actualités', icon: Plus },
-    { id: 'messages', label: 'Messages', icon: MessageCircle },
-    { id: 'profile', label: 'Profil', icon: User },
+    { id: 'feed', label: 'Actualités', icon: MessageCircle },
+    { id: 'menu', label: 'Menu', icon: Menu },
   ];
   const notifications = [
     { id: 1, title: 'Nouvelle formation disponible', time: '5 min', unread: true },
@@ -303,6 +302,97 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
           </div>
         </div>
       </div>
+
+      {/* Mobile Sidebar */}
+      {showMobileSidebar && (
+        <div className="md:hidden fixed inset-0 z-50 animate-fade-in">
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setShowMobileSidebar(false)}
+          />
+          
+          {/* Sidebar */}
+          <div className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl animate-slide-left">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <div className="flex items-center space-x-3">
+                <GraduationCap className="h-8 w-8 text-primary-900" />
+                <span className="text-xl font-bold text-primary-900">Menu</span>
+              </div>
+              <button
+                onClick={() => setShowMobileSidebar(false)}
+                className="p-2 text-gray-400 hover:text-gray-600 rounded-lg transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* User Profile */}
+            <div className="p-6 border-b border-gray-100">
+              <div className="flex items-center space-x-4">
+                <img
+                  src={user?.avatar || 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'}
+                  alt={user?.name}
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-soft"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">{user?.name}</div>
+                  <div className="text-sm text-gray-500 capitalize">{user?.role}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation Items */}
+            <div className="flex-1 overflow-y-auto py-6">
+              <nav className="space-y-2 px-6">
+                {sidebarItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = currentPage === item.id;
+                  const hasNotification = item.id === 'messages';
+                  
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        onPageChange(item.id);
+                        setShowMobileSidebar(false);
+                      }}
+                      className={`w-full flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 ${
+                        isActive
+                          ? 'bg-gradient-to-r from-primary-50 to-primary-100 text-primary-900'
+                          : 'text-gray-600 hover:text-primary-900 hover:bg-gray-50'
+                      }`}
+                    >
+                      <Icon className={`h-6 w-6 transition-transform duration-300 ${
+                        isActive ? 'scale-110' : 'group-hover:scale-105'
+                      }`} />
+                      <span className="font-medium">{item.label}</span>
+                      {hasNotification && (
+                        <div className="ml-auto w-2 h-2 bg-error-500 rounded-full animate-pulse"></div>
+                      )}
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="border-t border-gray-100 p-6">
+              <button
+                onClick={() => {
+                  logout();
+                  setShowMobileSidebar(false);
+                }}
+                className="w-full flex items-center space-x-4 px-4 py-3 text-error-600 hover:text-error-700 hover:bg-error-50 rounded-xl transition-all duration-300"
+              >
+                <LogOut className="h-6 w-6" />
+                <span className="font-medium">Déconnexion</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Overlay for dropdowns */}
       {(showProfileMenu || showNotifications) && (
         <div 

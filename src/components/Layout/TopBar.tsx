@@ -126,10 +126,188 @@ const TopBar: React.FC<TopBarProps> = ({
             {/* Logo */}
             <div className="flex items-center space-x-2">
               <GraduationCap className="h-6 w-6 text-primary-900" />
+              <span className="text-lg font-bold text-primary-900">Startup Academy</span>
+            </div>
+            
+            {/* Right actions */}
+            <div className="flex items-center space-x-2">
+              <button className="p-2 text-gray-400 hover:text-primary-900 rounded-lg transition-colors">
+                <Search className="h-5 w-5" />
+              </button>
+              <button 
+                onClick={() => setShowNotifications(!showNotifications)}
+                className="p-2 text-gray-400 hover:text-primary-900 rounded-lg transition-colors relative"
+              >
+                <Bell className="h-5 w-5" />
+                <span className="absolute -top-1 -right-1 h-2 w-2 bg-error-500 rounded-full"></span>
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Notifications Dropdown */}
+        {showNotifications && (
+          <div className="absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-large animate-slide-down z-40">
+            <div className="px-4 py-3 border-b border-gray-100">
+              <h3 className="text-sm font-semibold text-gray-900">Notifications</h3>
+            </div>
+            <div className="max-h-64 overflow-y-auto scrollbar-hide">
+              {notifications.map((notification) => (
+                <div key={notification.id} className="px-4 py-3 hover:bg-gray-50 transition-colors">
+                  <div className="flex items-start space-x-3">
+                    <div className={`w-2 h-2 rounded-full mt-2 ${notification.unread ? 'bg-primary-600' : 'bg-gray-300'}`}></div>
+                    <div className="flex-1">
+                      <p className="text-sm text-gray-900">{notification.title}</p>
+                      <p className="text-xs text-gray-500 mt-1">{notification.time}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
+        <div className="bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-large">
+          <div className="flex items-center justify-around py-2">
+            {mobileNavigationItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = currentPage === item.id;
+              const hasNotification = item.id === 'messages' && true;
+              
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => onPageChange(item.id)}
+                  className={`relative flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 min-w-0 flex-1 ${
+                    isActive
+                      ? 'text-primary-600'
+                      : 'text-gray-500 hover:text-primary-600'
+                  }`}
+                >
+                  <div className="relative">
+                    <Icon className={`h-6 w-6 transition-all duration-300 ${
+                      isActive ? 'scale-110' : 'scale-100'
+                    }`} />
+                    {hasNotification && !isActive && (
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-error-500 rounded-full animate-pulse"></div>
+                    )}
+                    {isActive && (
+                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary-600 rounded-full"></div>
+                    )}
+                  </div>
+                  <span className={`text-xs mt-1 font-medium transition-all duration-300 ${
+                    isActive ? 'text-primary-600' : 'text-gray-500'
+                  }`}>
+                    {item.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Sidebar */}
+      {showMobileSidebar && (
+        <div className="md:hidden fixed inset-0 z-50 animate-fade-in">
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setShowMobileSidebar(false)}
+          />
+          
+          {/* Sidebar */}
+          <div className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl animate-slide-left">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <div className="flex items-center space-x-3">
+                <GraduationCap className="h-8 w-8 text-primary-900" />
+                <span className="text-xl font-bold text-primary-900">Menu</span>
+              </div>
+              <button
+                onClick={() => setShowMobileSidebar(false)}
+                className="p-2 text-gray-400 hover:text-gray-600 rounded-lg transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* User Profile */}
+            <div className="p-6 border-b border-gray-100">
+              <div className="flex items-center space-x-4">
+                <img
+                  src={user?.avatar || 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'}
+                  alt={user?.name}
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-soft"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">{user?.name}</div>
+                  <div className="text-sm text-gray-500 capitalize">{user?.role}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation Items */}
+            <div className="flex-1 overflow-y-auto py-6">
+              <nav className="space-y-2 px-6">
+                {sidebarItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = currentPage === item.id;
+                  const hasNotification = item.id === 'messages';
+                  
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        onPageChange(item.id);
+                        setShowMobileSidebar(false);
+                      }}
+                      className={`w-full flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 ${
+                        isActive
+                          ? 'bg-gradient-to-r from-primary-50 to-primary-100 text-primary-900'
+                          : 'text-gray-600 hover:text-primary-900 hover:bg-gray-50'
+                      }`}
+                    >
+                      <Icon className={`h-6 w-6 transition-transform duration-300 ${
+                        isActive ? 'scale-110' : 'group-hover:scale-105'
+                      }`} />
+                      <span className="font-medium">{item.label}</span>
+                      {hasNotification && (
+                        <div className="ml-auto w-2 h-2 bg-error-500 rounded-full animate-pulse"></div>
+                      )}
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="border-t border-gray-100 p-6">
+              <button
+                onClick={() => {
+                  // Add logout functionality here
+                  setShowMobileSidebar(false);
+                }}
+                className="w-full flex items-center space-x-4 px-4 py-3 text-error-600 hover:text-error-700 hover:bg-error-50 rounded-xl transition-all duration-300"
+              >
+                <LogOut className="h-6 w-6" />
+                <span className="font-medium">Déconnexion</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Overlay for dropdowns */}
+      {showNotifications && (
+        <div 
+          className="fixed inset-0 z-40" 
+          onClick={() => setShowNotifications(false)}
+        />
+      )}
     </>
   );
 };
