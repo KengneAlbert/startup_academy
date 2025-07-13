@@ -12,7 +12,8 @@ import {
   BookOpen,
   Users,
   Library,
-  Target
+  Target,
+  Calendar
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -36,6 +37,7 @@ const TopBar: React.FC<TopBarProps> = ({
     { id: 'dashboard', label: 'Accueil', icon: Home },
     { id: 'courses', label: 'Formations', icon: BookOpen },
     { id: 'projects', label: 'Projets', icon: Target },
+    { id: 'events', label: 'Événements', icon: Calendar },
     { id: 'feed', label: 'Actualités', icon: Plus },
     { id: 'messages', label: 'Messages', icon: MessageCircle },
     { id: 'profile', label: 'Profil', icon: User },
