@@ -21,7 +21,6 @@ const AppContent: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [showLogin, setShowLogin] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   if (!isAuthenticated) {
     return (
@@ -83,8 +82,6 @@ const AppContent: React.FC = () => {
         <TopBar 
           currentPage={currentPage} 
           onPageChange={setCurrentPage}
-          onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          isMobileMenuOpen={isMobileMenuOpen}
         />
         <main className={`flex-1 animate-fade-in pb-20 md:pb-0 ${
           isSidebarCollapsed ? 'md:ml-0' : 'md:ml-0'

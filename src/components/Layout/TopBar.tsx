@@ -10,34 +10,26 @@ import {
   Plus,
   Home,
   BookOpen,
-  Users,
-  Library,
-  Target,
-  Calendar
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import MobileSidebar from './MobileSidebar';
 
 interface TopBarProps {
   currentPage: string;
   onPageChange: (page: string) => void;
-  onToggleMobileMenu: () => void;
-  isMobileMenuOpen: boolean;
 }
 
 const TopBar: React.FC<TopBarProps> = ({ 
   currentPage, 
-  onPageChange, 
-  onToggleMobileMenu,
-  isMobileMenuOpen 
+  onPageChange
 }) => {
   const { user } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const mobileNavigationItems = [
     { id: 'dashboard', label: 'Accueil', icon: Home },
     { id: 'courses', label: 'Formations', icon: BookOpen },
-    { id: 'projects', label: 'Projets', icon: Target },
-    { id: 'events', label: 'Événements', icon: Calendar },
     { id: 'feed', label: 'Actualités', icon: Plus },
     { id: 'messages', label: 'Messages', icon: MessageCircle },
     { id: 'profile', label: 'Profil', icon: User },
@@ -141,6 +133,12 @@ const TopBar: React.FC<TopBarProps> = ({
                 <Bell className="h-5 w-5" />
                 <span className="absolute -top-1 -right-1 h-2 w-2 bg-error-500 rounded-full"></span>
               </button>
+              <button
+                onClick={() => setIsMobileSidebarOpen(true)}
+                className="p-2 text-gray-400 hover:text-primary-900 rounded-lg transition-colors"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>
@@ -217,6 +215,14 @@ const TopBar: React.FC<TopBarProps> = ({
           onClick={() => setShowNotifications(false)}
         />
       )}
+
+      {/* Mobile Sidebar */}
+      <MobileSidebar
+        isOpen={isMobileSidebarOpen}
+        onClose={() => setIsMobileSidebarOpen(false)}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+      />
     </>
   );
 };
