@@ -284,7 +284,6 @@ const LessonPlayer: React.FC<LessonPlayerProps> = ({ courseId, lessonId, onBack 
                 
                 {nextLesson && (
                   <button className="flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
-                    onClick={() => onBack && onBack()}
                     <span className="text-sm">Suivant: {nextLesson.title}</span>
                     <ChevronRight className="h-4 w-4" />
                   </button>
@@ -330,8 +329,52 @@ const LessonPlayer: React.FC<LessonPlayerProps> = ({ courseId, lessonId, onBack 
                       >
                         Transcription
                       </button>
+                      <button
+                        onClick={() => {
+                          setShowNotes(false);
+                          setShowTranscript(false);
+                        }}
+                        className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                          !showNotes && !showTranscript
+                            ? 'border-primary-500 text-primary-600'
+                            : 'border-transparent text-gray-500 hover:text-gray-700'
+                        }`}
+                      >
+                        Résumé
+                      </button>
                     </nav>
                   </div>
+
+                  {/* Summary */}
+                  {!showNotes && !showTranscript && (
+                    <div className="space-y-6">
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-3">Résumé de la leçon</h3>
+                        <div className="prose prose-gray max-w-none">
+                          <p className="text-gray-700 leading-relaxed mb-4">
+                            Dans cette leçon, nous explorons les fondements du Business Model Canvas, un outil révolutionnaire 
+                            créé par Alexander Osterwalder. Vous découvrirez comment cet outil peut transformer votre approche 
+                            de la création d'entreprise.
+                          </p>
+                          <h4 className="text-md font-semibold text-gray-900 mb-2">Points clés abordés :</h4>
+                          <ul className="list-disc list-inside space-y-2 text-gray-700">
+                            <li>L'histoire et l'évolution du Business Model Canvas</li>
+                            <li>Les 9 blocs fondamentaux du canvas</li>
+                            <li>Comment utiliser le canvas pour structurer votre idée</li>
+                            <li>Exemples concrets d'entreprises célèbres</li>
+                            <li>Erreurs courantes à éviter</li>
+                          </ul>
+                          <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                            <h4 className="font-semibold text-blue-900 mb-2">💡 Conseil pratique</h4>
+                            <p className="text-blue-800 text-sm">
+                              Commencez par identifier clairement votre proposition de valeur avant de remplir les autres blocs. 
+                              C'est le cœur de votre modèle économique !
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Notes */}
                   {showNotes && (
