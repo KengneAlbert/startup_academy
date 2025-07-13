@@ -284,6 +284,7 @@ const LessonPlayer: React.FC<LessonPlayerProps> = ({ courseId, lessonId, onBack 
                 
                 {nextLesson && (
                   <button className="flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                    onClick={() => onBack && onBack()}
                     <span className="text-sm">Suivant: {nextLesson.title}</span>
                     <ChevronRight className="h-4 w-4" />
                   </button>
