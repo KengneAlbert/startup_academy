@@ -9,6 +9,19 @@ interface CourseDetailProps {
 const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [completedLessons, setCompletedLessons] = useState<Set<number>>(new Set([1, 2, 3]));
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<any>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const handlePlaylistItemClick = (item: any) => {
+    if (item.type === 'video') {
+      setSelectedVideo(item);
+      setShowVideoPlayer(true);
+    } else if (item.type === 'document') {
+      // Handle document download
+      window.open(item.fileUrl, '_blank');
+    }
+  };
 
   // Mock course data - in real app, fetch by courseId
   const course = {
@@ -38,6 +51,9 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
     certificate: true,
     downloadable: true,
     lifetime: true,
+    totalVideos: 8,
+    totalDocuments: 5,
+    totalDuration: '2h 30m',
     objectives: [
       'Maîtriser les 9 blocs du Business Model Canvas',
       'Analyser des modèles économiques existants',
@@ -52,104 +68,124 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
       'Motivation pour apprendre et pratiquer',
       'Accès à un ordinateur et internet'
     ],
-    modules: [
+    playlist: [
       {
         id: 1,
-        title: 'Introduction au Business Model Canvas',
-        lessons: [
-          {
-            id: 1,
-            title: 'Qu\'est-ce que le Business Model Canvas ?',
-            duration: '12:30',
-            type: 'video',
-            completed: true,
-            preview: true
-          },
-          {
-            id: 2,
-            title: 'Histoire et évolution du Canvas',
-            duration: '8:45',
-            type: 'video',
-            completed: true,
-            preview: false
-          },
-          {
-            id: 3,
-            title: 'Quiz : Concepts de base',
-            duration: '5:00',
-            type: 'quiz',
-            completed: true,
-            preview: false
-          }
-        ]
+        title: 'Qu\'est-ce que le Business Model Canvas ?',
+        duration: '12:30',
+        type: 'video',
+        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+        description: 'Introduction complète au Business Model Canvas, son histoire et ses applications pratiques.',
+        views: 1247,
+        likes: 89,
+        completed: true,
+        preview: true,
+        uploadDate: '2024-01-15'
       },
       {
         id: 2,
-        title: 'Les 9 blocs du Canvas',
-        lessons: [
-          {
-            id: 4,
-            title: 'Segments de clientèle',
-            duration: '15:20',
-            type: 'video',
-            completed: false,
-            preview: false
-          },
-          {
-            id: 5,
-            title: 'Proposition de valeur',
-            duration: '18:15',
-            type: 'video',
-            completed: false,
-            preview: false
-          },
-          {
-            id: 6,
-            title: 'Canaux de distribution',
-            duration: '12:40',
-            type: 'video',
-            completed: false,
-            preview: false
-          },
-          {
-            id: 7,
-            title: 'Exercice pratique : Vos 3 premiers blocs',
-            duration: '20:00',
-            type: 'exercise',
-            completed: false,
-            preview: false
-          }
-        ]
+        title: 'Histoire et évolution du Canvas',
+        duration: '8:45',
+        type: 'video',
+        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+        description: 'Découvrez l\'histoire du Business Model Canvas et son évolution depuis sa création.',
+        views: 892,
+        likes: 67,
+        completed: true,
+        preview: false,
+        uploadDate: '2024-01-16'
       },
       {
         id: 3,
-        title: 'Validation et itération',
-        lessons: [
-          {
-            id: 8,
-            title: 'Tester vos hypothèses',
-            duration: '16:30',
-            type: 'video',
-            completed: false,
-            preview: false
-          },
-          {
-            id: 9,
-            title: 'Itérer votre modèle',
-            duration: '14:20',
-            type: 'video',
-            completed: false,
-            preview: false
-          },
-          {
-            id: 10,
-            title: 'Projet final : Votre Canvas complet',
-            duration: '30:00',
-            type: 'project',
-            completed: false,
-            preview: false
-          }
-        ]
+        title: 'Template Business Model Canvas',
+        duration: null,
+        type: 'document',
+        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        fileUrl: '#',
+        description: 'Template PDF téléchargeable pour créer votre propre Business Model Canvas.',
+        downloads: 456,
+        likes: 34,
+        completed: false,
+        preview: false,
+        uploadDate: '2024-01-17',
+        fileSize: '2.3 MB',
+        fileType: 'PDF'
+      },
+      {
+        id: 4,
+        title: 'Les 9 blocs du Canvas - Partie 1',
+        duration: '15:20',
+        type: 'video',
+        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        description: 'Exploration détaillée des premiers blocs : segments de clientèle, proposition de valeur.',
+        views: 734,
+        likes: 52,
+        completed: false,
+        preview: false,
+        uploadDate: '2024-01-18'
+      },
+      {
+        id: 5,
+        title: 'Les 9 blocs du Canvas - Partie 2',
+        duration: '18:15',
+        type: 'video',
+        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+        description: 'Suite de l\'exploration : canaux, relations clients, sources de revenus.',
+        views: 623,
+        likes: 41,
+        completed: false,
+        preview: false,
+        uploadDate: '2024-01-19'
+      },
+      {
+        id: 6,
+        title: 'Exemples de Canvas célèbres',
+        duration: null,
+        type: 'document',
+        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        fileUrl: '#',
+        description: 'Collection d\'exemples de Business Model Canvas d\'entreprises connues.',
+        downloads: 289,
+        likes: 28,
+        completed: false,
+        preview: false,
+        uploadDate: '2024-01-20',
+        fileSize: '1.8 MB',
+        fileType: 'PDF'
+      },
+      {
+        id: 7,
+        title: 'Validation de votre modèle',
+        duration: '16:30',
+        type: 'video',
+        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+        description: 'Méthodes pour tester et valider votre Business Model Canvas.',
+        views: 512,
+        likes: 38,
+        completed: false,
+        preview: false,
+        uploadDate: '2024-01-21'
+      },
+      {
+        id: 8,
+        title: 'Checklist de validation',
+        duration: null,
+        type: 'document',
+        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
+        fileUrl: '#',
+        description: 'Checklist complète pour valider chaque bloc de votre canvas.',
+        downloads: 178,
+        likes: 19,
+        completed: false,
+        preview: false,
+        uploadDate: '2024-01-22',
+        fileSize: '0.9 MB',
+        fileType: 'PDF'
       }
     ],
     reviews: [
@@ -188,32 +224,30 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
 
   const tabs = [
     { id: 'overview', label: 'Aperçu', icon: BookOpen },
-    { id: 'curriculum', label: 'Programme', icon: FileText },
+    { id: 'playlist', label: 'Playlist', icon: Play },
     { id: 'instructor', label: 'Instructeur', icon: User },
     { id: 'reviews', label: 'Avis', icon: Star }
   ];
 
-  const getLessonIcon = (type: string) => {
+  const getItemIcon = (type: string) => {
     switch (type) {
-      case 'video': return Video;
-      case 'quiz': return Quiz;
-      case 'exercise': return Code;
-      case 'project': return Lightbulb;
+      case 'video': return Play;
+      case 'document': return FileText;
       default: return FileText;
     }
   };
 
-  const getLessonTypeLabel = (type: string) => {
+  const getItemTypeLabel = (type: string) => {
     switch (type) {
       case 'video': return 'Vidéo';
-      case 'quiz': return 'Quiz';
-      case 'exercise': return 'Exercice';
-      case 'project': return 'Projet';
-      default: return 'Leçon';
+      case 'document': return 'Document';
+      default: return 'Contenu';
     }
   };
 
-  const totalLessons = course.modules.reduce((total, module) => total + module.lessons.length, 0);
+  const totalItems = course.playlist.length;
+  const totalVideos = course.playlist.filter(item => item.type === 'video').length;
+  const totalDocuments = course.playlist.filter(item => item.type === 'document').length;
   const completedCount = completedLessons.size;
 
   return (
@@ -301,8 +335,12 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
                   <div className="text-xs text-gray-600">Langue</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-3">
-                  <div className="text-lg font-bold text-gray-900">{totalLessons}</div>
-                  <div className="text-xs text-gray-600">Leçons</div>
+                  <div className="text-lg font-bold text-gray-900">{totalVideos}</div>
+                  <div className="text-xs text-gray-600">Vidéos</div>
+                </div>
+                <div className="bg-gray-50 rounded-xl p-3">
+                  <div className="text-lg font-bold text-gray-900">{totalDocuments}</div>
+                  <div className="text-xs text-gray-600">Documents</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-3">
                   <div className="flex items-center justify-center space-x-1">
