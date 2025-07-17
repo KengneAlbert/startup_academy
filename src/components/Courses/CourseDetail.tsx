@@ -76,7 +76,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
         type: 'video',
         thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
         videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-        description: 'Introduction complète au Business Model Canvas, son histoire et ses applications pratiques.',
+        description: 'Introduction complète au Business Model Canvas, son histoire et ses applications pratiques dans le monde entrepreneurial.',
         views: 1247,
         likes: 89,
         completed: true,
@@ -90,7 +90,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
         type: 'video',
         thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
         videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-        description: 'Découvrez l\'histoire du Business Model Canvas et son évolution depuis sa création.',
+        description: 'Découvrez l\'histoire du Business Model Canvas créé par Alexander Osterwalder et son évolution depuis sa création.',
         views: 892,
         likes: 67,
         completed: true,
@@ -120,7 +120,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
         type: 'video',
         thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
         videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-        description: 'Exploration détaillée des premiers blocs : segments de clientèle, proposition de valeur.',
+        description: 'Exploration détaillée des premiers blocs du canvas : segments de clientèle, proposition de valeur et relations clients.',
         views: 734,
         likes: 52,
         completed: false,
@@ -134,7 +134,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
         type: 'video',
         thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
         videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-        description: 'Suite de l\'exploration : canaux, relations clients, sources de revenus.',
+        description: 'Suite de l\'exploration des blocs : canaux de distribution, sources de revenus et structure de coûts.',
         views: 623,
         likes: 41,
         completed: false,
@@ -164,7 +164,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
         type: 'video',
         thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
         videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-        description: 'Méthodes pour tester et valider votre Business Model Canvas.',
+        description: 'Méthodes pratiques pour tester et valider votre Business Model Canvas avec de vrais clients.',
         views: 512,
         likes: 38,
         completed: false,
@@ -583,8 +583,16 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
             <div className="flex items-center space-x-6 mb-8">
               <img
                 src={course.instructor.avatar}
-                alt={course.instructor.name}
+                controls
+                autoPlay
                 className="w-24 h-24 rounded-full object-cover ring-4 ring-white shadow-large"
+                onLoadedData={() => {
+                  // Video is ready to play
+                  console.log('Video loaded:', selectedVideo.title);
+                }}
+                onError={(e) => {
+                  console.error('Video error:', e);
+                }}
               />
               <div>
                 <h2 className="text-2xl font-bold text-primary-900 mb-2">{course.instructor.name}</h2>
