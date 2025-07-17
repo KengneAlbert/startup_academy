@@ -248,6 +248,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack }) => {
   const totalItems = course.playlist.length;
   const totalVideos = course.playlist.filter(item => item.type === 'video').length;
   const totalDocuments = course.playlist.filter(item => item.type === 'document').length;
+  const totalLessons = course.playlist.length;
   const completedCount = completedLessons.size;
 
   return (
