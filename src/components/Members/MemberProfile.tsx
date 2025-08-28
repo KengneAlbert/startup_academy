@@ -35,6 +35,8 @@ import {
   Flag,
   Shield
 } from 'lucide-react';
+import Claudel from '../../assets/claudel.jpg';
+import Cover from '../../assets/formations.jpg';
 
 interface MemberProfileProps {
   memberId: string;
@@ -50,156 +52,156 @@ const MemberProfile: React.FC<MemberProfileProps> = ({ memberId, onBack }) => {
   // Mock member data - in real app, fetch by memberId
   const member = {
     id: 1,
-    name: "Alain Tchouamo",
-    profession: "UX Designer & Product Manager",
-    company: "TechFlow Solutions",
+    name: "Serge Atanga",
+    profession: "Chef de projet Digital",
+    company: "CamerTech",
     location: "Douala, Cameroun",
     sector: "tech",
-    bio: "Passionné par la création d'expériences utilisateur exceptionnelles. 8 ans d'expérience dans le design de produits digitaux pour le marché africain. J'aide les startups à créer des produits centrés sur l'utilisateur.",
+    bio: "Expert en gestion de projets digitaux avec une solide expérience dans le développement de solutions adaptées au marché camerounais. Spécialisé dans l'accompagnement des PME dans leur transformation numérique.",
     skills: [
-      "UX Design",
-      "Product Management", 
-      "Figma",
-      "User Research",
-      "Prototyping",
-      "Design System",
-      "Mobile Design",
-      "Usability Testing"
+      "Gestion de projet",
+      "Transformation digitale",
+      "Solutions mobiles",
+      "E-commerce",
+      "Mobile Money",
+      "Formation",
+      "Business Analysis",
+      "Solutions PME"
     ],
     experienceYears: "8 ans",
-    avatar: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop",
-    coverImage: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
-    rating: 4.9,
-    connections: 156,
-    followers: 342,
-    following: 89,
-    projects: 23,
+    avatar: Claudel,
+    coverImage: Cover,
+    rating: 4.8,
+    connections: 245,
+    followers: 312,
+    following: 156,
+    projects: 32,
     isOnline: true,
-    joinDate: "2023-01-15",
-    lastActive: "2025-01-20T15:30:00Z",
+    joinDate: "2022-06-15",
+    lastActive: "2024-01-20T15:30:00Z",
     verified: true,
     socialLinks: {
-      linkedin: "https://linkedin.com/in/alain-tchouamo",
-      twitter: "https://twitter.com/alain_ux",
-      website: "https://alaintchouamo.design",
-      github: "https://github.com/alain-tchouamo"
+      linkedin: "https://linkedin.com/in/serge-atanga",
+      twitter: "https://twitter.com/serge_tech",
+      website: "https://sergeatanga.cm",
+      github: "https://github.com/serge-atanga"
     },
     contact: {
-      email: "alain@techflow.cm",
-      phone: "+237 6 91 23 45 67",
-      website: "https://alaintchouamo.design"
+      email: "contact@sergeatanga.cm",
+      phone: "+237 697 123 456",
+      website: "https://sergeatanga.cm"
     },
     services: [
       {
         id: 1,
-        title: "Audit UX/UI",
-        description: "Analyse complète de votre interface utilisateur avec recommandations d'amélioration",
-        price: "150,000 FCFA",
-        duration: "1-2 semaines",
-        category: "Audit"
+        title: "Digitalisation PME",
+        description: "Accompagnement complet pour la transformation digitale de votre entreprise",
+        price: "450 000 FCFA",
+        duration: "2-3 mois",
+        category: "Conseil"
       },
       {
         id: 2,
-        title: "Design System",
-        description: "Création d'un système de design cohérent pour votre produit",
-        price: "500,000 FCFA",
-        duration: "3-4 semaines", 
-        category: "Design"
+        title: "Application Mobile Money",
+        description: "Développement d'applications intégrant Orange Money, MTN MoMo et autres solutions de paiement mobile",
+        price: "1 500 000 FCFA",
+        duration: "3-4 mois",
+        category: "Développement"
       },
       {
         id: 3,
-        title: "Formation UX",
-        description: "Formation de votre équipe aux bonnes pratiques UX/UI",
-        price: "75,000 FCFA/jour",
-        duration: "Variable",
+        title: "Formation Digital",
+        description: "Formation sur les outils digitaux pour votre équipe",
+        price: "100 000 FCFA/jour",
+        duration: "Sur mesure",
         category: "Formation"
       }
     ],
     portfolio: [
       {
         id: 1,
-        title: "App Mobile Banking",
-        description: "Interface mobile pour une banque camerounaise",
+        title: "Plateforme E-commerce Bamenda Market",
+        description: "Marketplace pour artisans et commerçants du Nord-Ouest",
         image: "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-        category: "Mobile App",
-        year: "2024",
-        client: "Afriland First Bank"
+        category: "E-commerce",
+        year: "2023",
+        client: "Bamenda Chamber of Commerce"
       },
       {
         id: 2,
-        title: "Plateforme E-commerce",
-        description: "Design d'une marketplace pour produits locaux",
+        title: "App Livraison Yaoundé Express",
+        description: "Application de livraison pour restaurants à Yaoundé",
         image: "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-        category: "Web App",
-        year: "2024",
-        client: "CamerMarket"
+        category: "Mobile",
+        year: "2023",
+        client: "Yaoundé Express"
       },
       {
         id: 3,
-        title: "Dashboard Analytics",
-        description: "Interface de tableau de bord pour startup fintech",
+        title: "Système de Gestion PMUC",
+        description: "Solution de gestion pour points de vente PMUC",
         image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-        category: "Dashboard",
-        year: "2023",
-        client: "PayTech Solutions"
+        category: "Gestion",
+        year: "2022",
+        client: "PMUC Cameroun"
       }
     ],
     experienceHistory: [
       {
         id: 1,
-        title: "Senior UX Designer",
-        company: "TechFlow Solutions",
+        title: "Chef de Projet Digital",
+        company: "CamerTech Solutions",
         location: "Douala, Cameroun",
-        startDate: "2022-01",
+        startDate: "2021-03",
         endDate: null,
         current: true,
-        description: "Lead UX pour les produits digitaux, gestion d'équipe design, recherche utilisateur."
+        description: "Direction de projets digitaux pour grandes entreprises et PME camerounaises."
       },
       {
         id: 2,
-        title: "Product Designer",
-        company: "Digital Africa",
-        location: "Yaoundé, Cameroun", 
-        startDate: "2019-06",
-        endDate: "2021-12",
+        title: "Consultant Digital",
+        company: "Orange Cameroun",
+        location: "Douala, Cameroun",
+        startDate: "2018-06",
+        endDate: "2021-02",
         current: false,
-        description: "Design d'interfaces pour applications mobiles et web, prototypage, tests utilisateur."
+        description: "Conseil en solutions digitales et Mobile Money pour le réseau Orange."
       }
     ],
     education: [
       {
         id: 1,
-        degree: "Master en Design Interactif",
-        school: "École Supérieure d'Art de Douala",
-        year: "2017",
+        degree: "Master en Management des Systèmes d'Information",
+        school: "Institut Universitaire de la Côte",
+        year: "2016",
         location: "Douala, Cameroun"
       }
     ],
     testimonials: [
       {
         id: 1,
-        author: "Marie Kamdem",
-        role: "CEO, StartupCam",
-        avatar: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-        content: "Alain a transformé notre produit. Son approche UX centrée utilisateur a augmenté notre engagement de 300%.",
+        author: "Pascal Ngandjui",
+        role: "DG, Bamenda Market",
+        avatar: Claudel,
+        content: "Serge a révolutionné notre business avec sa solution e-commerce. Nos ventes ont augmenté de 200% en 6 mois.",
         rating: 5,
-        date: "2024-12"
+        date: "2023-12"
       },
       {
         id: 2,
-        author: "Paul Etoga",
-        role: "CTO, FinTech Pro",
-        avatar: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
-        content: "Excellent travail sur notre dashboard. Interface intuitive et design moderne. Je recommande vivement !",
+        author: "Élise Kouam",
+        role: "Propriétaire, Yaoundé Express",
+        avatar: Claudel,
+        content: "Application de livraison parfaitement adaptée au contexte de Yaoundé. Excellent travail!",
         rating: 5,
-        date: "2024-11"
+        date: "2023-11"
       }
     ],
     stats: [
-      { label: 'Projets réalisés', value: '23', icon: Target, color: 'text-blue-600' },
-      { label: 'Clients satisfaits', value: '18', icon: Users, color: 'text-green-600' },
+      { label: 'Projets réalisés', value: '32', icon: Target, color: 'text-blue-600' },
+      { label: 'Clients satisfaits', value: '25', icon: Users, color: 'text-green-600' },
       { label: 'Années d\'expérience', value: '8', icon: Award, color: 'text-purple-600' },
-      { label: 'Note moyenne', value: '4.9', icon: Star, color: 'text-gold-600' }
+      { label: 'Note moyenne', value: '4.8', icon: Star, color: 'text-gold-600' }
     ]
   };
 
@@ -305,7 +307,7 @@ const MemberProfile: React.FC<MemberProfileProps> = ({ memberId, onBack }) => {
                     <span className="text-base md:text-lg font-semibold text-gray-700">{member.rating}</span>
                   </div>
                 </div>
-                <p className="text-lg md:text-xl text-gray-700 mb-2">{member.profession}</p>
+                <p className="text-lg md:text-xl text-gray-700 mb-2 mt-6">{member.profession}</p>
                 <div className="flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-gray-600">
                   <div className="flex items-center space-x-1">
                     <Building className="h-4 w-4" />
@@ -336,7 +338,7 @@ const MemberProfile: React.FC<MemberProfileProps> = ({ memberId, onBack }) => {
                 className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 md:px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 flex items-center justify-center space-x-2 shadow-soft hover:shadow-medium transform hover:scale-105 text-sm md:text-base"
               >
                 <MessageCircle className="h-5 w-5" />
-                <span>Envoyer un message</span>
+                <span>Contacter</span>
               </button>
               <button
                 onClick={() => setIsFollowing(!isFollowing)}
