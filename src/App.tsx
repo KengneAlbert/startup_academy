@@ -15,6 +15,7 @@ import MessagesPage from './components/Messages/MessagesPage';
 import ProfilePage from './components/Profile/ProfilePage';
 import ProjectsPage from './components/Projects/ProjectsPage';
 import EventsPage from './components/Events/EventsPage';
+import SettingsPage from './components/Settings/SettingsPage';
 
 const AppContent: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -65,6 +66,8 @@ const AppContent: React.FC = () => {
         return <MessagesPage />;
       case 'profile':
         return <ProfilePage />;
+      case 'settings':
+        return <SettingsPage />;
       default:
         return renderDashboard();
     }
