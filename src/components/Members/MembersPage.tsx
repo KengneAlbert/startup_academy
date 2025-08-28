@@ -18,6 +18,7 @@ import {
   Globe,
   Mail,
   Phone,
+  Eye,
 } from "lucide-react";
 import Claudel from '../../assets/cordos/cordo_burkina.jpg';
 import Claudel2 from '../../assets/dr claudel.jpg';
