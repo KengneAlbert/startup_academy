@@ -544,9 +544,6 @@ const MembersPage: React.FC = () => {
                     onClick={() => handleMemberClick(member.id.toString())}
                     className="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105"
                   >
-                    onClick={() => handleMemberClick(member.id.toString())}
-                    className="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105"
-                  >
                     <Eye className="h-4 w-4" />
                   </button>
                 </div>
