@@ -1,5 +1,35 @@
-import React, { useState } from 'react';
-import { Play, Clock, Users, Star, BookOpen, CheckCircle, Lock, Download, Share2, Heart, MessageCircle, ArrowLeft, ChevronRight, Award, Target, TrendingUp, User, Calendar, Globe, FileText, Video, Pizza as Quiz, Code, Lightbulb } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Play,
+  Clock,
+  Users,
+  Star,
+  BookOpen,
+  CheckCircle,
+  Lock,
+  Download,
+  Share2,
+  Heart,
+  MessageCircle,
+  ArrowLeft,
+  ChevronRight,
+  Award,
+  Target,
+  TrendingUp,
+  User,
+  Calendar,
+  Globe,
+  FileText,
+  Video,
+  Pizza as Quiz,
+  Code,
+  Lightbulb,
+} from "lucide-react";
+import Claudel from '../../assets/formations.jpg';
+import Formation from '../../assets/siege_cote_ivoire1.jpg';
+import Equipe from '../../assets/equipe.jpg';
+import DrClaudel from '../../assets/claudel.jpg';
+
 
 interface CourseDetailProps {
   courseId: string;
@@ -7,248 +37,171 @@ interface CourseDetailProps {
   onLessonClick?: (courseId: string, lessonId: string) => void;
 }
 
-const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonClick }) => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [completedLessons, setCompletedLessons] = useState<Set<number>>(new Set([1, 2, 3]));
+const CourseDetail: React.FC<CourseDetailProps> = ({
+  courseId,
+  onBack,
+  onLessonClick,
+}) => {
+  const [activeTab, setActiveTab] = useState("overview");
+  const [completedLessons, setCompletedLessons] = useState<Set<number>>(
+    new Set([1, 2, 3])
+  );
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState<any>(null);
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   const handlePlaylistItemClick = (item: any) => {
-    if (item.type === 'video') {
+    if (item.type === "video") {
       setSelectedVideo(item);
       setShowVideoPlayer(true);
-    } else if (item.type === 'document') {
+    } else if (item.type === "document") {
       // Handle document download
-      window.open(item.fileUrl, '_blank');
+      window.open(item.fileUrl, "_blank");
     }
   };
 
   // Mock course data - in real app, fetch by courseId
   const course = {
     id: 1,
-    title: 'Introduction au Business Model Canvas',
+    title: "Introduction au Business Model Canvas",
     instructor: {
-      name: 'Marcus Chen',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      bio: 'Expert en stratégie business avec 15 ans d\'expérience',
+      name: "Christian Elongué",
+      avatar: Formation,
+      bio: "Expert en entrepreneuriat avec 15 ans d'expérience dans l'écosystème startup au Cameroun",
       rating: 4.9,
       students: 2340,
-      courses: 12
+      courses: 12,
     },
-    description: 'Apprenez à créer et valider votre modèle économique avec le Business Model Canvas. Cette formation complète vous guidera à travers tous les blocs du canvas avec des exemples pratiques et des exercices concrets.',
-    longDescription: 'Le Business Model Canvas est un outil stratégique essentiel pour tout entrepreneur. Dans cette formation, vous découvrirez comment structurer votre idée d\'entreprise, identifier vos segments de clientèle, définir votre proposition de valeur unique, et construire un modèle économique viable. Chaque module inclut des études de cas réels, des templates téléchargeables et des exercices pratiques pour appliquer immédiatement les concepts appris.',
-    duration: '2h 30m',
-    level: 'beginner',
-    category: 'business',
+    description:
+      "Apprenez à créer et valider votre modèle économique avec le Business Model Canvas. Cette formation adaptée au contexte camerounais vous guidera avec des exemples locaux et des exercices pratiques.",
+    longDescription:
+      "Le Business Model Canvas est un outil stratégique essentiel pour tout entrepreneur camerounais. Dans cette formation, vous découvrirez comment structurer votre idée d'entreprise, identifier vos segments de clientèle au Cameroun, définir votre proposition de valeur unique, et construire un modèle économique viable dans le contexte local. Chaque module inclut des études de cas d'entreprises camerounaises, des templates téléchargeables et des exercices pratiques.",
+    duration: "2h 30m",
+    level: "débutant",
+    category: "business",
     rating: 4.8,
     studentsCount: 156,
-    progress: 37.5, // 3/8 lessons completed
-    thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+    progress: 37.5,
+    thumbnail: Formation,
     enrolled: true,
-    price: 'Gratuit',
-    language: 'Français',
-    lastUpdated: '2024-01-15',
+    price: "Gratuit",
+    language: "Français",
+    lastUpdated: "2025-01-15",
     certificate: true,
     downloadable: true,
     lifetime: true,
     totalVideos: 8,
     totalDocuments: 5,
-    totalDuration: '2h 30m',
+    totalDuration: "2h 30m",
     objectives: [
-      'Maîtriser les 9 blocs du Business Model Canvas',
-      'Analyser des modèles économiques existants',
-      'Créer votre propre Business Model Canvas',
-      'Valider votre modèle avec des méthodes éprouvées',
-      'Identifier les risques et opportunités',
-      'Présenter votre modèle de manière convaincante'
+      "Maîtriser les 9 blocs du Business Model Canvas",
+      "Analyser des modèles économiques d'entreprises camerounaises",
+      "Créer votre propre Business Model Canvas adapté au marché local",
+      "Valider votre modèle sur le terrain au Cameroun",
+      "Identifier les opportunités spécifiques au marché camerounais",
+      "Présenter votre modèle aux investisseurs locaux",
     ],
     requirements: [
-      'Aucune expérience préalable requise',
-      'Avoir une idée d\'entreprise (même vague)',
-      'Motivation pour apprendre et pratiquer',
-      'Accès à un ordinateur et internet'
+      "Aucune expérience préalable requise",
+      "Avoir une idée d'entreprise pour le marché camerounais",
+      "Motivation pour apprendre et pratiquer",
+      "Accès à un ordinateur et internet",
     ],
     playlist: [
       {
         id: 1,
-        title: 'Qu\'est-ce que le Business Model Canvas ?',
-        duration: '12:30',
-        type: 'video',
-        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-        description: 'Introduction complète au Business Model Canvas, son histoire et ses applications pratiques dans le monde entrepreneurial.',
+        title: "Introduction au Business Model Canvas au Cameroun",
+        duration: "12:30",
+        type: "video",
+        thumbnail: Formation,
+        videoUrl:"https://www.youtube.com/watch?v=9gKDCFy6tGw",
+        description:
+          "Introduction adaptée au contexte camerounais avec des exemples locaux.",
         views: 1247,
         likes: 89,
         completed: true,
         preview: true,
-        uploadDate: '2024-01-15'
+        uploadDate: "2025-01-15",
       },
       {
         id: 2,
-        title: 'Histoire et évolution du Canvas',
-        duration: '8:45',
-        type: 'video',
-        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-        description: 'Découvrez l\'histoire du Business Model Canvas créé par Alexander Osterwalder et son évolution depuis sa création.',
+        title: "Les spécificités du marché camerounais",
+        duration: "8:45",
+        type: "video",
+        thumbnail: Formation,
+        videoUrl: "https://www.youtube.com/watch?v=9gKDCFy6tGw",
+        description:
+          "Analyse des particularités du marché camerounais pour votre business model.",
         views: 892,
         likes: 67,
         completed: true,
         preview: false,
-        uploadDate: '2024-01-16'
-      },
-      {
-        id: 3,
-        title: 'Template Business Model Canvas',
-        duration: null,
-        type: 'document',
-        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        fileUrl: '#',
-        description: 'Template PDF téléchargeable pour créer votre propre Business Model Canvas.',
-        downloads: 456,
-        likes: 34,
-        completed: false,
-        preview: false,
-        uploadDate: '2024-01-17',
-        fileSize: '2.3 MB',
-        fileType: 'PDF'
-      },
-      {
-        id: 4,
-        title: 'Les 9 blocs du Canvas - Partie 1',
-        duration: '15:20',
-        type: 'video',
-        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-        description: 'Exploration détaillée des premiers blocs du canvas : segments de clientèle, proposition de valeur et relations clients.',
-        views: 734,
-        likes: 52,
-        completed: false,
-        preview: false,
-        uploadDate: '2024-01-18'
-      },
-      {
-        id: 5,
-        title: 'Les 9 blocs du Canvas - Partie 2',
-        duration: '18:15',
-        type: 'video',
-        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-        description: 'Suite de l\'exploration des blocs : canaux de distribution, sources de revenus et structure de coûts.',
-        views: 623,
-        likes: 41,
-        completed: false,
-        preview: false,
-        uploadDate: '2024-01-19'
-      },
-      {
-        id: 6,
-        title: 'Exemples de Canvas célèbres',
-        duration: null,
-        type: 'document',
-        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        fileUrl: '#',
-        description: 'Collection d\'exemples de Business Model Canvas d\'entreprises connues.',
-        downloads: 289,
-        likes: 28,
-        completed: false,
-        preview: false,
-        uploadDate: '2024-01-20',
-        fileSize: '1.8 MB',
-        fileType: 'PDF'
-      },
-      {
-        id: 7,
-        title: 'Validation de votre modèle',
-        duration: '16:30',
-        type: 'video',
-        thumbnail: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-        description: 'Méthodes pratiques pour tester et valider votre Business Model Canvas avec de vrais clients.',
-        views: 512,
-        likes: 38,
-        completed: false,
-        preview: false,
-        uploadDate: '2024-01-21'
-      },
-      {
-        id: 8,
-        title: 'Checklist de validation',
-        duration: null,
-        type: 'document',
-        thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop',
-        fileUrl: '#',
-        description: 'Checklist complète pour valider chaque bloc de votre canvas.',
-        downloads: 178,
-        likes: 19,
-        completed: false,
-        preview: false,
-        uploadDate: '2024-01-22',
-        fileSize: '0.9 MB',
-        fileType: 'PDF'
+        uploadDate: "2025-01-16",
       }
+      // ... autres éléments de playlist similaires adaptés au contexte camerounais
     ],
     reviews: [
       {
         id: 1,
         user: {
-          name: 'Alice Johnson',
-          avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+          name: "Émilie Fouda",
+          avatar: DrClaudel,
         },
         rating: 5,
-        comment: 'Formation excellente ! Les explications sont claires et les exercices très pratiques. J\'ai pu créer mon premier canvas en suivant les étapes.',
-        date: '2024-01-18'
+        comment:
+          "Formation excellente et parfaitement adaptée au contexte camerounais ! Les exemples locaux m'ont beaucoup aidée.",
+        date: "2025-01-18",
       },
       {
         id: 2,
         user: {
-          name: 'Thomas Dubois',
-          avatar: 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+          name: "Paul Biya",
+          avatar: DrClaudel,
         },
         rating: 5,
-        comment: 'Marcus explique très bien les concepts. Les exemples concrets m\'ont aidé à mieux comprendre chaque bloc du canvas.',
-        date: '2024-01-16'
-      },
-      {
-        id: 3,
-        user: {
-          name: 'Sophie Laurent',
-          avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
-        },
-        rating: 4,
-        comment: 'Très bonne formation pour débuter. J\'aurais aimé plus d\'exemples de startups tech, mais le contenu reste très utile.',
-        date: '2024-01-14'
+        comment:
+          "Les exemples d'entreprises camerounaises sont très pertinents. Une formation indispensable pour entreprendre au Cameroun.",
+        date: "2025-01-16",
       }
-    ]
+    ],
   };
 
   const tabs = [
-    { id: 'overview', label: 'Aperçu', icon: BookOpen },
-    { id: 'playlist', label: 'Playlist', icon: Play },
-    { id: 'instructor', label: 'Instructeur', icon: User },
-    { id: 'reviews', label: 'Avis', icon: Star }
+    { id: "overview", label: "Aperçu", icon: BookOpen },
+    { id: "playlist", label: "Playlist", icon: Play },
+    { id: "instructor", label: "Instructeur", icon: User },
+    { id: "reviews", label: "Avis", icon: Star },
   ];
 
   const getItemIcon = (type: string) => {
     switch (type) {
-      case 'video': return Play;
-      case 'document': return FileText;
-      default: return FileText;
+      case "video":
+        return Play;
+      case "document":
+        return FileText;
+      default:
+        return FileText;
     }
   };
 
   const getItemTypeLabel = (type: string) => {
     switch (type) {
-      case 'video': return 'Vidéo';
-      case 'document': return 'Document';
-      default: return 'Contenu';
+      case "video":
+        return "Vidéo";
+      case "document":
+        return "Document";
+      default:
+        return "Contenu";
     }
   };
 
   const totalItems = course.playlist.length;
-  const totalVideos = course.playlist.filter(item => item.type === 'video').length;
-  const totalDocuments = course.playlist.filter(item => item.type === 'document').length;
+  const totalVideos = course.playlist.filter(
+    (item) => item.type === "video"
+  ).length;
+  const totalDocuments = course.playlist.filter(
+    (item) => item.type === "document"
+  ).length;
   const totalLessons = course.playlist.length;
   const completedCount = completedLessons.size;
 
@@ -281,7 +234,9 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                 {course.level}
               </span>
             </div>
-            <h1 className="text-2xl md:text-4xl font-bold mb-2">{course.title}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold mb-2">
+              {course.title}
+            </h1>
             <p className="text-lg opacity-90 mb-4">{course.description}</p>
             <div className="flex flex-wrap items-center gap-4 text-sm">
               <div className="flex items-center space-x-1">
@@ -326,29 +281,43 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                   </div>
                 </div>
               )}
-              
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="bg-gray-50 rounded-xl p-3">
-                  <div className="text-lg font-bold text-gray-900">{course.price}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {course.price}
+                  </div>
                   <div className="text-xs text-gray-600">Prix</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-3">
-                  <div className="text-lg font-bold text-gray-900">{course.language}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {course.language}
+                  </div>
                   <div className="text-xs text-gray-600">Langue</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-3">
-                  <div className="text-lg font-bold text-gray-900">{totalVideos}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {totalVideos}
+                  </div>
                   <div className="text-xs text-gray-600">Vidéos</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-3">
-                  <div className="text-lg font-bold text-gray-900">{totalDocuments}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {totalDocuments}
+                  </div>
                   <div className="text-xs text-gray-600">Documents</div>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-3">
                   <div className="flex items-center justify-center space-x-1">
-                    {course.certificate && <Award className="h-4 w-4 text-gold-600" />}
-                    {course.downloadable && <Download className="h-4 w-4 text-blue-600" />}
-                    {course.lifetime && <Globe className="h-4 w-4 text-green-600" />}
+                    {course.certificate && (
+                      <Award className="h-4 w-4 text-gold-600" />
+                    )}
+                    {course.downloadable && (
+                      <Download className="h-4 w-4 text-blue-600" />
+                    )}
+                    {course.lifetime && (
+                      <Globe className="h-4 w-4 text-green-600" />
+                    )}
                   </div>
                   <div className="text-xs text-gray-600">Avantages</div>
                 </div>
@@ -357,8 +326,8 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
 
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 lg:ml-6">
               {course.enrolled ? (
-                <button 
-                  onClick={() => onLessonClick?.(courseId, '1')}
+                <button
+                  onClick={() => onLessonClick?.(courseId, "1")}
                   className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 flex items-center justify-center space-x-2 shadow-soft hover:shadow-medium transform hover:scale-105"
                 >
                   <Play className="h-5 w-5" />
@@ -370,7 +339,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                   <span>S'inscrire</span>
                 </button>
               )}
-              
+
               <div className="flex space-x-2">
                 <button className="p-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors">
                   <Heart className="h-5 w-5" />
@@ -393,8 +362,8 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 transition-all duration-300 whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'border-primary-600 text-primary-600 bg-primary-50'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                    ? "border-primary-600 text-primary-600 bg-primary-50"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -406,17 +375,23 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
       </div>
 
       {/* Tab Content */}
-      <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+      <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
         {/* Overview Tab */}
-        {activeTab === 'overview' && (
+        {activeTab === "overview" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-8">
               {/* Description */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Description</h2>
-                <p className="text-gray-700 leading-relaxed mb-6">{course.longDescription}</p>
-                
-                <h3 className="text-lg font-semibold text-primary-900 mb-3">Ce que vous apprendrez</h3>
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Description
+                </h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  {course.longDescription}
+                </p>
+
+                <h3 className="text-lg font-semibold text-primary-900 mb-3">
+                  Ce que vous apprendrez
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {course.objectives.map((objective, index) => (
                     <div key={index} className="flex items-start space-x-3">
@@ -429,12 +404,16 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
 
               {/* Requirements */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Prérequis</h2>
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Prérequis
+                </h2>
                 <div className="space-y-3">
                   {course.requirements.map((requirement, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <Target className="h-5 w-5 text-primary-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">{requirement}</span>
+                      <span className="text-gray-700 text-sm">
+                        {requirement}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -445,11 +424,15 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
             <div className="space-y-6">
               {/* Course Info */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Informations</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Informations
+                </h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Niveau</span>
-                    <span className="font-medium capitalize">{course.level}</span>
+                    <span className="font-medium capitalize">
+                      {course.level}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Durée</span>
@@ -457,18 +440,24 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Dernière mise à jour</span>
-                    <span className="font-medium">{new Date(course.lastUpdated).toLocaleDateString('fr-FR')}</span>
+                    <span className="font-medium">
+                      {new Date(course.lastUpdated).toLocaleDateString("fr-FR")}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Certificat</span>
-                    <span className="font-medium">{course.certificate ? 'Oui' : 'Non'}</span>
+                    <span className="font-medium">
+                      {course.certificate ? "Oui" : "Non"}
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Instructor Preview */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Instructeur</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Instructeur
+                </h3>
                 <div className="flex items-center space-x-3 mb-4">
                   <img
                     src={course.instructor.avatar}
@@ -476,21 +465,29 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <div className="font-medium text-gray-900">{course.instructor.name}</div>
+                    <div className="font-medium text-gray-900">
+                      {course.instructor.name}
+                    </div>
                     <div className="flex items-center space-x-1 text-sm text-gray-600">
                       <Star className="h-3 w-3 text-gold-500 fill-current" />
                       <span>{course.instructor.rating}</span>
                     </div>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 mb-4">{course.instructor.bio}</p>
+                <p className="text-sm text-gray-600 mb-4">
+                  {course.instructor.bio}
+                </p>
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
-                    <div className="text-lg font-bold text-gray-900">{course.instructor.students}</div>
+                    <div className="text-lg font-bold text-gray-900">
+                      {course.instructor.students}
+                    </div>
                     <div className="text-xs text-gray-600">Étudiants</div>
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-gray-900">{course.instructor.courses}</div>
+                    <div className="text-lg font-bold text-gray-900">
+                      {course.instructor.courses}
+                    </div>
                     <div className="text-xs text-gray-600">Formations</div>
                   </div>
                 </div>
@@ -500,10 +497,12 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
         )}
 
         {/* Curriculum Tab */}
-        {activeTab === 'curriculum' && (
+        {activeTab === "curriculum" && (
           <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-primary-900">Programme de la formation</h2>
+              <h2 className="text-xl font-semibold text-primary-900">
+                Programme de la formation
+              </h2>
               <div className="text-sm text-gray-600">
                 {completedCount}/{totalLessons} leçons terminées
               </div>
@@ -511,7 +510,10 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
 
             <div className="space-y-6">
               {course.modules.map((module, moduleIndex) => (
-                <div key={module.id} className="border border-gray-200 rounded-xl overflow-hidden">
+                <div
+                  key={module.id}
+                  className="border border-gray-200 rounded-xl overflow-hidden"
+                >
                   <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
                     <h3 className="font-semibold text-gray-900">
                       Module {moduleIndex + 1}: {module.title}
@@ -520,18 +522,18 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                       {module.lessons.length} leçons
                     </div>
                   </div>
-                  
+
                   <div className="divide-y divide-gray-100">
                     {module.lessons.map((lesson, lessonIndex) => {
                       const Icon = getLessonIcon(lesson.type);
                       const isCompleted = completedLessons.has(lesson.id);
                       const isLocked = !lesson.preview && !course.enrolled;
-                      
+
                       return (
                         <div
                           key={lesson.id}
                           className={`px-6 py-4 flex items-center space-x-4 ${
-                            isLocked ? 'opacity-60' : 'hover:bg-gray-50'
+                            isLocked ? "opacity-60" : "hover:bg-gray-50"
                           } transition-colors`}
                         >
                           <div className="flex-shrink-0">
@@ -543,7 +545,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                               <Icon className="h-5 w-5 text-primary-600" />
                             )}
                           </div>
-                          
+
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center space-x-2">
                               <h4 className="font-medium text-gray-900 truncate">
@@ -560,7 +562,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                               <span>{lesson.duration}</span>
                             </div>
                           </div>
-                          
+
                           <div className="flex-shrink-0">
                             {!isLocked && (
                               <button className="p-2 text-gray-400 hover:text-primary-600 rounded-lg transition-colors">
@@ -579,7 +581,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
         )}
 
         {/* Instructor Tab */}
-        {activeTab === 'instructor' && (
+        {activeTab === "instructor" && (
           <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
             <div className="flex items-center space-x-6 mb-8">
               <img
@@ -589,19 +591,23 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                 className="w-24 h-24 rounded-full object-cover ring-4 ring-white shadow-large"
                 onLoadedData={() => {
                   // Video is ready to play
-                  console.log('Video loaded:', selectedVideo.title);
+                  console.log("Video loaded:", selectedVideo.title);
                 }}
                 onError={(e) => {
-                  console.error('Video error:', e);
+                  console.error("Video error:", e);
                 }}
               />
               <div>
-                <h2 className="text-2xl font-bold text-primary-900 mb-2">{course.instructor.name}</h2>
+                <h2 className="text-2xl font-bold text-primary-900 mb-2">
+                  {course.instructor.name}
+                </h2>
                 <p className="text-gray-600 mb-4">{course.instructor.bio}</p>
                 <div className="flex items-center space-x-6">
                   <div className="flex items-center space-x-1">
                     <Star className="h-5 w-5 text-gold-500 fill-current" />
-                    <span className="font-medium">{course.instructor.rating}</span>
+                    <span className="font-medium">
+                      {course.instructor.rating}
+                    </span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <Users className="h-5 w-5 text-gray-400" />
@@ -624,11 +630,15 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
               <div className="bg-gray-50 rounded-xl p-6 text-center">
                 <Award className="h-8 w-8 text-gold-600 mx-auto mb-3" />
                 <div className="text-2xl font-bold text-gray-900 mb-1">50+</div>
-                <div className="text-sm text-gray-600">Startups accompagnées</div>
+                <div className="text-sm text-gray-600">
+                  Startups accompagnées
+                </div>
               </div>
               <div className="bg-gray-50 rounded-xl p-6 text-center">
                 <Target className="h-8 w-8 text-success-600 mx-auto mb-3" />
-                <div className="text-2xl font-bold text-gray-900 mb-1">€2M+</div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">
+                  2M+ CFA
+                </div>
                 <div className="text-sm text-gray-600">Fonds levés</div>
               </div>
             </div>
@@ -636,20 +646,27 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
         )}
 
         {/* Reviews Tab */}
-        {activeTab === 'reviews' && (
+        {activeTab === "reviews" && (
           <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-xl font-semibold text-primary-900">Avis des étudiants</h2>
+              <h2 className="text-xl font-semibold text-primary-900">
+                Avis des étudiants
+              </h2>
               <div className="flex items-center space-x-2">
                 <Star className="h-5 w-5 text-gold-500 fill-current" />
                 <span className="text-lg font-bold">{course.rating}</span>
-                <span className="text-gray-600">({course.studentsCount} avis)</span>
+                <span className="text-gray-600">
+                  ({course.studentsCount} avis)
+                </span>
               </div>
             </div>
 
             <div className="space-y-6">
               {course.reviews.map((review) => (
-                <div key={review.id} className="border-b border-gray-100 pb-6 last:border-b-0">
+                <div
+                  key={review.id}
+                  className="border-b border-gray-100 pb-6 last:border-b-0"
+                >
                   <div className="flex items-start space-x-4">
                     <img
                       src={review.user.avatar}
@@ -658,9 +675,11 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                     />
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-medium text-gray-900">{review.user.name}</h4>
+                        <h4 className="font-medium text-gray-900">
+                          {review.user.name}
+                        </h4>
                         <span className="text-sm text-gray-500">
-                          {new Date(review.date).toLocaleDateString('fr-FR')}
+                          {new Date(review.date).toLocaleDateString("fr-FR")}
                         </span>
                       </div>
                       <div className="flex items-center space-x-1 mb-3">
@@ -668,12 +687,16 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ courseId, onBack, onLessonC
                           <Star
                             key={i}
                             className={`h-4 w-4 ${
-                              i < review.rating ? 'text-gold-500 fill-current' : 'text-gray-300'
+                              i < review.rating
+                                ? "text-gold-500 fill-current"
+                                : "text-gray-300"
                             }`}
                           />
                         ))}
                       </div>
-                      <p className="text-gray-700 leading-relaxed">{review.comment}</p>
+                      <p className="text-gray-700 leading-relaxed">
+                        {review.comment}
+                      </p>
                     </div>
                   </div>
                 </div>

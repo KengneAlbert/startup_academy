@@ -1,5 +1,51 @@
-import React, { useState } from 'react';
-import { ArrowLeft, Download, Eye, Star, Calendar, User, BookOpen, Heart, Share2, MessageCircle, ExternalLink, FileText, Clock, Award, TrendingUp, Users, Bookmark, Play, Pause, Volume2, VolumeX, Settings, ChevronLeft, ChevronRight, Search, Highlighter as Highlight, Quote, Tag, Globe, Printer, Mail } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  ArrowLeft,
+  Download,
+  Eye,
+  Star,
+  Calendar,
+  User,
+  BookOpen,
+  Heart,
+  Share2,
+  MessageCircle,
+  ExternalLink,
+  FileText,
+  Clock,
+  Award,
+  TrendingUp,
+  Users,
+  Bookmark,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Settings,
+  ChevronLeft,
+  ChevronRight,
+  Search,
+  Highlighter as Highlight,
+  Quote,
+  Tag,
+  Globe,
+  Printer,
+  Mail,
+} from "lucide-react";
+import Livre from "../../assets/livres/le_jeune_entrepreneur_africain_tome_un.jpg";
+import Claudel from "../../assets/claudel.jpg";
+import Livre1 from '../../assets/livres/cent_idees_de_projets.jpg';
+import Livre2 from '../../assets/livres/corona_virus.jpg';
+import Livre3 from '../../assets/livres/creer_sa_structure_hospitaliere.jpg';
+import Livre4 from '../../assets/livres/education_pour_enfants.jpg';
+import Livre5 from '../../assets/livres/entreprendre_et_investir_autrement.jpg';
+import Livre6 from '../../assets/livres/femme_patrone.jpg';
+import Livre7 from '../../assets/livres/investisseur_immobilier.jpg';
+import Livre8 from '../../assets/livres/la_fonction_marketing_a_hopital.jpg';
+import Livre9 from '../../assets/livres/le_jeune_entrepreneur_africain_tome_un.jpg';
+import Livre10 from '../../assets/livres/le_prix_de_la_reussite.jpg';
+import Livre11 from '../../assets/livres/les_secrets_des_meilleurs_vendeurs.jpg';
+import Livre12 from '../../assets/livres/marketing_relationnel.jpg';
 
 interface BookDetailProps {
   bookId: string;
@@ -8,162 +54,198 @@ interface BookDetailProps {
 }
 
 const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   // Mock book data - in real app, fetch by bookId
   const book = {
     id: 1,
-    title: 'The Lean Startup',
-    author: 'Eric Ries',
-    category: 'business',
-    description: 'Une approche révolutionnaire pour créer des entreprises plus rapidement et plus intelligemment',
-    longDescription: 'The Lean Startup est une méthode révolutionnaire qui a changé la façon dont les entreprises sont créées et les nouveaux produits sont lancés. Eric Ries définit une startup comme une organisation humaine conçue pour créer un nouveau produit ou service dans des conditions d\'extrême incertitude. Cette approche favorise les entreprises qui sont à la fois plus efficaces en termes de capital et qui exploitent mieux la créativité humaine.',
-    thumbnail: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop',
-    pdfUrl: '#',
+    title: "Le jeune entrepreneur africain - Tome 1",
+    author: "Dr Claudel Noubissie",
+    category: "business",
+    description:
+      "Une approche révolutionnaire pour créer des entreprises plus rapidement et plus intelligemment",
+    longDescription:
+      "Ce livre est un manifeste pour une révolution entrepreneuriale en Afrique. Claudel Noubissie y dénonce les failles du système éducatif hérité de la colonisation, qui forme des salariés plutôt que des créateurs de richesse. Il appelle les jeunes Africains à se libérer mentalement et à devenir des entrepreneurs stratégiques, même sans financement.",
+    thumbnail: Livre,
+    pdfUrl: "#",
     downloadCount: 1247,
     rating: 4.8,
     reviewsCount: 342,
-    publishedDate: '2011-09-13',
-    pages: 336,
-    language: 'Français',
-    publisher: 'Crown Business',
-    isbn: '978-0307887894',
-    fileSize: '2.3 MB',
-    format: 'PDF',
-    readTime: '8h 30m',
-    difficulty: 'Intermédiaire',
-    tags: ['Entrepreneuriat', 'Innovation', 'Startup', 'Lean', 'Méthodologie'],
+    publishedDate: "2016-09-13",
+    pages: 295,
+    language: "Français",
+    publisher: "ÉDITIONS SENG’A",
+    isbn: "978-0307887894",
+    fileSize: "2.3 MB",
+    format: "PDF",
+    readTime: "8h 30m",
+    difficulty: "Intermédiaire",
+    tags: ["Entrepreneuriat", "Innovation", "Startup", "Lean", "Méthodologie"],
     tableOfContents: [
       {
         chapter: 1,
-        title: 'Start',
-        pages: '1-25',
+        title: "Introduction : Le réveil mental et économique",
+        pages: "22-39",
         sections: [
-          'The Lean Startup Method',
-          'Entrepreneurial Management',
-          'Validated Learning'
-        ]
+          "L’Afrique a une jeunesse démographiquement dominante.",
+          "Le système éducatif hérité de la colonisation forme des salariés, pas des créateurs.",
+          "La pauvreté est souvent glorifiée à travers la religion et les médias.",
+          "L’entrepreneuriat est présenté comme une voie stratégique pour l’indépendance économique."
+        ],
       },
       {
         chapter: 2,
-        title: 'Steer',
-        pages: '26-180',
+        title: "L’illusion de richesse",
+        pages: "40-59",
         sections: [
-          'Build-Measure-Learn',
-          'Minimum Viable Product',
-          'Innovation Accounting',
-          'Pivot (or Persevere)'
-        ]
+          "Beaucoup vivent au-dessus de leurs moyens pour paraître riches.",
+          "Exemple comparatif entre deux fonctionnaires : l’un sobre, l’autre endetté.",
+          "Les pays occidentaux sont eux-mêmes surendettés malgré leur apparente richesse.",
+          "L’Afrique est riche en ressources mais dépendante économiquement.",
+          "Le capitalisme favorise une minorité d’actionnaires au détriment des salariés.",
+        ],
       },
       {
         chapter: 3,
-        title: 'Accelerate',
-        pages: '181-336',
+        title: "Les 10 raisons de créer une entreprise",
+        pages: "60-95",
         sections: [
-          'Batch',
-          'Grow',
-          'Adapt',
-          'Innovate'
-        ]
-      }
+          "Le salariat est un danger pour l’Afrique.", 
+          "C’est la pire manière de gagner de l’argent.", 
+          "Vous réalisez le rêve de quelqu’un d’autre.", 
+          "Le syndrome du locataire et de cocon.",
+          "La sécurité de l’emploi est une illusion.",
+
+          "L’entreprise permet de créer de la valeur.",
+
+          "L’entrepreneur est libre de ses décisions.",
+
+          "L’entrepreneuriat permet de résoudre des problèmes locaux.",
+
+          "Vous pouvez embaucher et impacter votre communauté.",
+
+          "Vous devenez acteur du développement économique."
+        ],
+      },
     ],
     keyTakeaways: [
-      'Apprenez à construire une organisation qui apprend',
-      'Maîtrisez le cycle Build-Measure-Learn',
-      'Comprenez quand pivoter et quand persévérer',
-      'Développez un produit minimum viable (MVP)',
-      'Implémentez l\'innovation accounting',
-      'Créez des moteurs de croissance durables'
+      "Critique du système éducatif africain",
+      "L’illusion de richesse",
+      "Les raisons de créer une entreprise",
+      "Les erreurs à éviter",
+      "Créer sans financement",
+      "L’art de convaincre",
+      "Cas pratiques et exercices",
     ],
     aboutAuthor: {
-      name: 'Eric Ries',
-      bio: 'Eric Ries est un entrepreneur et auteur américain. Il est le créateur de la méthodologie Lean Startup, qui a été adoptée dans le monde entier par des entrepreneurs et des entreprises établies.',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+      name: "Claudel Noubissie",
+      bio: "Claudel Noubissie est un entrepreneur et auteur camerounais. Il est le l'auteur du livre Le jeune entrepreneur africain, qui a été adoptée dans le monde entier par des entrepreneurs et des entreprises établies.",
+      avatar: Claudel,
       achievements: [
-        'Fondateur de IMVU',
-        'Entrepreneur en résidence à Harvard Business School',
-        'Co-fondateur de Long-Term Stock Exchange',
-        'Auteur de plusieurs bestsellers'
+        "Fondateur de la Startup Academy",
+        "Entrepreneur à succès",
+        "Co-fondateur de Ndjoka",
+        "Auteur de plusieurs bestsellers",
       ],
-      otherBooks: [
-        'The Startup Way',
-        'The Leader\'s Guide'
-      ]
+      otherBooks: ["Stop VIH SIDA", "Un médecin atypique","Le prix à payer"],
     },
     reviews: [
       {
         id: 1,
         user: {
-          name: 'Alice Johnson',
-          avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+          name: "Dr Claudel",
+          avatar:Claudel,
         },
         rating: 5,
-        comment: 'Un livre essentiel pour tout entrepreneur. La méthodologie Lean Startup a complètement changé ma façon d\'aborder le développement produit.',
-        date: '2024-01-18',
-        helpful: 23
+        comment:
+          "Un livre essentiel pour tout entrepreneur. La méthodologie Le jeune entrepreneur africain a complètement changé ma façon d'aborder le développement produit.",
+        date: "2025-01-18",
+        helpful: 23,
       },
       {
         id: 2,
         user: {
-          name: 'Thomas Dubois',
-          avatar: 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+          name: "Claudel",
+          avatar:Claudel,
         },
         rating: 4,
-        comment: 'Très bon livre avec des concepts pratiques. Quelques répétitions mais les exemples sont excellents.',
-        date: '2024-01-16',
-        helpful: 18
+        comment:
+          "Très bon livre avec des concepts pratiques. Quelques répétitions mais les exemples sont excellents.",
+        date: "2025-01-16",
+        helpful: 18,
       },
       {
         id: 3,
         user: {
-          name: 'Sophie Laurent',
-          avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+          name: "Claudel Noubissie",
+          avatar:Claudel,
         },
         rating: 5,
-        comment: 'Indispensable ! J\'ai appliqué ces méthodes dans ma startup et les résultats sont impressionnants.',
-        date: '2024-01-14',
-        helpful: 31
-      }
+        comment:
+          "Indispensable ! J'ai appliqué ces méthodes dans ma startup et les résultats sont impressionnants.",
+        date: "2025-01-14",
+        helpful: 31,
+      },
     ],
     relatedBooks: [
       {
         id: 2,
-        title: 'Zero to One',
-        author: 'Peter Thiel',
-        thumbnail: 'https://images.pexels.com/photos/1370298/pexels-photo-1370298.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
-        rating: 4.6
+        title: "Le prix de la réussite",
+        author: "Claudel Noubissie",
+        thumbnail: Livre10,
+        rating: 4.6,
       },
       {
         id: 3,
-        title: 'The Innovator\'s Dilemma',
-        author: 'Clayton M. Christensen',
-        thumbnail: 'https://images.pexels.com/photos/1329571/pexels-photo-1329571.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
-        rating: 4.7
+        title: "Tontine Structurelle en Afrique",
+        author: "Claudel Noubissie",
+        thumbnail:Livre3,
+        rating: 4.7,
       },
       {
         id: 4,
-        title: 'Crossing the Chasm',
-        author: 'Geoffrey A. Moore',
-        thumbnail: 'https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
-        rating: 4.4
-      }
-    ]
+        title: "Marketing relationnel",
+        author: "Claudel Noubissie",
+        thumbnail:Livre12,
+        rating: 4.4,
+      },
+    ],
   };
 
   const tabs = [
-    { id: 'overview', label: 'Aperçu', icon: BookOpen },
-    { id: 'contents', label: 'Table des matières', icon: FileText },
-    { id: 'author', label: 'Auteur', icon: User },
-    { id: 'reviews', label: 'Avis', icon: Star }
+    { id: "overview", label: "Aperçu", icon: BookOpen },
+    { id: "contents", label: "Table des matières", icon: FileText },
+    { id: "author", label: "Auteur", icon: User },
+    { id: "reviews", label: "Avis", icon: Star },
   ];
 
   const stats = [
-    { label: 'Téléchargements', value: book.downloadCount.toLocaleString(), icon: Download, color: 'text-blue-600' },
-    { label: 'Note moyenne', value: book.rating.toString(), icon: Star, color: 'text-gold-600' },
-    { label: 'Avis', value: book.reviewsCount.toString(), icon: MessageCircle, color: 'text-green-600' },
-    { label: 'Pages', value: book.pages.toString(), icon: BookOpen, color: 'text-purple-600' }
+    {
+      label: "Téléchargements",
+      value: book.downloadCount.toLocaleString(),
+      icon: Download,
+      color: "text-blue-600",
+    },
+    {
+      label: "Note moyenne",
+      value: book.rating.toString(),
+      icon: Star,
+      color: "text-gold-600",
+    },
+    {
+      label: "Avis",
+      value: book.reviewsCount.toString(),
+      icon: MessageCircle,
+      color: "text-green-600",
+    },
+    {
+      label: "Pages",
+      value: book.pages.toString(),
+      icon: BookOpen,
+      color: "text-purple-600",
+    },
   ];
 
   return (
@@ -210,27 +292,43 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
                       {book.difficulty}
                     </span>
                   </div>
-                  <h1 className="text-2xl md:text-4xl font-bold text-primary-900 mb-2">{book.title}</h1>
-                  <p className="text-lg md:text-xl text-gray-700 mb-4">par {book.author}</p>
-                  <p className="text-gray-600 leading-relaxed mb-6">{book.description}</p>
+                  <h1 className="text-2xl md:text-4xl font-bold text-primary-900 mb-2">
+                    {book.title}
+                  </h1>
+                  <p className="text-lg md:text-xl text-gray-700 mb-4">
+                    par {book.author}
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {book.description}
+                  </p>
                 </div>
-                
+
                 <div className="flex flex-col space-y-2 ml-4">
                   <button
                     onClick={() => setIsLiked(!isLiked)}
                     className={`p-3 rounded-xl transition-colors ${
-                      isLiked ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600 hover:bg-red-50 hover:text-red-600'
+                      isLiked
+                        ? "bg-red-100 text-red-600"
+                        : "bg-gray-100 text-gray-600 hover:bg-red-50 hover:text-red-600"
                     }`}
                   >
-                    <Heart className={`h-5 w-5 ${isLiked ? 'fill-current' : ''}`} />
+                    <Heart
+                      className={`h-5 w-5 ${isLiked ? "fill-current" : ""}`}
+                    />
                   </button>
                   <button
                     onClick={() => setIsBookmarked(!isBookmarked)}
                     className={`p-3 rounded-xl transition-colors ${
-                      isBookmarked ? 'bg-gold-100 text-gold-600' : 'bg-gray-100 text-gray-600 hover:bg-gold-50 hover:text-gold-600'
+                      isBookmarked
+                        ? "bg-gold-100 text-gold-600"
+                        : "bg-gray-100 text-gray-600 hover:bg-gold-50 hover:text-gold-600"
                     }`}
                   >
-                    <Bookmark className={`h-5 w-5 ${isBookmarked ? 'fill-current' : ''}`} />
+                    <Bookmark
+                      className={`h-5 w-5 ${
+                        isBookmarked ? "fill-current" : ""
+                      }`}
+                    />
                   </button>
                   <button className="p-3 bg-gray-100 text-gray-600 rounded-xl hover:bg-gray-200 transition-colors">
                     <Share2 className="h-5 w-5" />
@@ -241,19 +339,27 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
               {/* Book Details */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center p-3 bg-gray-50 rounded-xl">
-                  <div className="text-lg font-bold text-gray-900">{book.pages}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {book.pages}
+                  </div>
                   <div className="text-xs text-gray-600">Pages</div>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-xl">
-                  <div className="text-lg font-bold text-gray-900">{book.readTime}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {book.readTime}
+                  </div>
                   <div className="text-xs text-gray-600">Lecture</div>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-xl">
-                  <div className="text-lg font-bold text-gray-900">{book.language}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {book.language}
+                  </div>
                   <div className="text-xs text-gray-600">Langue</div>
                 </div>
                 <div className="text-center p-3 bg-gray-50 rounded-xl">
-                  <div className="text-lg font-bold text-gray-900">{book.fileSize}</div>
+                  <div className="text-lg font-bold text-gray-900">
+                    {book.fileSize}
+                  </div>
                   <div className="text-xs text-gray-600">Taille</div>
                 </div>
               </div>
@@ -265,13 +371,19 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
                     <Star
                       key={i}
                       className={`h-5 w-5 ${
-                        i < Math.floor(book.rating) ? 'text-gold-500 fill-current' : 'text-gray-300'
+                        i < Math.floor(book.rating)
+                          ? "text-gold-500 fill-current"
+                          : "text-gray-300"
                       }`}
                     />
                   ))}
                 </div>
-                <span className="text-lg font-semibold text-gray-900">{book.rating}</span>
-                <span className="text-gray-600">({book.reviewsCount} avis)</span>
+                <span className="text-lg font-semibold text-gray-900">
+                  {book.rating}
+                </span>
+                <span className="text-gray-600">
+                  ({book.reviewsCount} avis)
+                </span>
               </div>
 
               {/* Action Buttons */}
@@ -300,10 +412,16 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
               return (
                 <div key={index} className="text-center group cursor-pointer">
                   <div className="flex items-center justify-center mb-2">
-                    <Icon className={`h-6 w-6 ${stat.color} group-hover:scale-110 transition-transform duration-300`} />
+                    <Icon
+                      className={`h-6 w-6 ${stat.color} group-hover:scale-110 transition-transform duration-300`}
+                    />
                   </div>
-                  <div className="text-lg md:text-xl font-bold text-primary-900">{stat.value}</div>
-                  <div className="text-xs md:text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-lg md:text-xl font-bold text-primary-900">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs md:text-sm text-gray-600">
+                    {stat.label}
+                  </div>
                 </div>
               );
             })}
@@ -321,8 +439,8 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 transition-all duration-300 whitespace-nowrap ${
                     activeTab === tab.id
-                      ? 'border-primary-600 text-primary-600 bg-primary-50'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                      ? "border-primary-600 text-primary-600 bg-primary-50"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -335,17 +453,23 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
       </div>
 
       {/* Tab Content */}
-      <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+      <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
         {/* Overview Tab */}
-        {activeTab === 'overview' && (
+        {activeTab === "overview" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-8">
               {/* Description */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Description</h2>
-                <p className="text-gray-700 leading-relaxed mb-6">{book.longDescription}</p>
-                
-                <h3 className="text-lg font-semibold text-primary-900 mb-3">Points clés</h3>
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Description
+                </h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  {book.longDescription}
+                </p>
+
+                <h3 className="text-lg font-semibold text-primary-900 mb-3">
+                  Points clés
+                </h3>
                 <div className="space-y-3">
                   {book.keyTakeaways.map((takeaway, index) => (
                     <div key={index} className="flex items-start space-x-3">
@@ -358,7 +482,9 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
 
               {/* Tags */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Mots-clés</h2>
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Mots-clés
+                </h2>
                 <div className="flex flex-wrap gap-2">
                   {book.tags.map((tag, index) => (
                     <span
@@ -376,7 +502,9 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
             <div className="space-y-6">
               {/* Book Info */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Informations</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Informations
+                </h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Éditeur</span>
@@ -384,7 +512,9 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Publication</span>
-                    <span className="font-medium">{new Date(book.publishedDate).getFullYear()}</span>
+                    <span className="font-medium">
+                      {new Date(book.publishedDate).getFullYear()}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">ISBN</span>
@@ -399,21 +529,32 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
 
               {/* Related Books */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Livres similaires</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Livres similaires
+                </h3>
                 <div className="space-y-4">
                   {book.relatedBooks.map((relatedBook) => (
-                    <div key={relatedBook.id} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
+                    <div
+                      key={relatedBook.id}
+                      className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer"
+                    >
                       <img
                         src={relatedBook.thumbnail}
                         alt={relatedBook.title}
                         className="w-12 h-16 object-cover rounded"
                       />
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-medium text-gray-900 text-sm truncate">{relatedBook.title}</h4>
-                        <p className="text-xs text-gray-600 truncate">{relatedBook.author}</p>
+                        <h4 className="font-medium text-gray-900 text-sm truncate">
+                          {relatedBook.title}
+                        </h4>
+                        <p className="text-xs text-gray-600 truncate">
+                          {relatedBook.author}
+                        </p>
                         <div className="flex items-center space-x-1 mt-1">
                           <Star className="h-3 w-3 text-gold-500 fill-current" />
-                          <span className="text-xs text-gray-600">{relatedBook.rating}</span>
+                          <span className="text-xs text-gray-600">
+                            {relatedBook.rating}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -425,26 +566,36 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
         )}
 
         {/* Table of Contents Tab */}
-        {activeTab === 'contents' && (
+        {activeTab === "contents" && (
           <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-            <h2 className="text-xl font-semibold text-primary-900 mb-6">Table des matières</h2>
-            
+            <h2 className="text-xl font-semibold text-primary-900 mb-6">
+              Table des matières
+            </h2>
+
             <div className="space-y-6">
               {book.tableOfContents.map((chapter) => (
-                <div key={chapter.chapter} className="border border-gray-200 rounded-xl overflow-hidden">
+                <div
+                  key={chapter.chapter}
+                  className="border border-gray-200 rounded-xl overflow-hidden"
+                >
                   <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
                     <div className="flex items-center justify-between">
                       <h3 className="font-semibold text-gray-900">
                         Chapitre {chapter.chapter}: {chapter.title}
                       </h3>
-                      <span className="text-sm text-gray-600">Pages {chapter.pages}</span>
+                      <span className="text-sm text-gray-600">
+                        Pages {chapter.pages}
+                      </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
                     <div className="space-y-3">
                       {chapter.sections.map((section, sectionIndex) => (
-                        <div key={sectionIndex} className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors cursor-pointer">
+                        <div
+                          key={sectionIndex}
+                          className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 transition-colors cursor-pointer"
+                        >
                           <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
                           <span>{section}</span>
                         </div>
@@ -458,7 +609,7 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
         )}
 
         {/* Author Tab */}
-        {activeTab === 'author' && (
+        {activeTab === "author" && (
           <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
             <div className="flex items-center space-x-6 mb-8">
               <img
@@ -467,14 +618,20 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
                 className="w-24 h-24 rounded-full object-cover ring-4 ring-white shadow-large"
               />
               <div>
-                <h2 className="text-2xl font-bold text-primary-900 mb-2">{book.aboutAuthor.name}</h2>
-                <p className="text-gray-600 leading-relaxed">{book.aboutAuthor.bio}</p>
+                <h2 className="text-2xl font-bold text-primary-900 mb-2">
+                  {book.aboutAuthor.name}
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  {book.aboutAuthor.bio}
+                </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Réalisations</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Réalisations
+                </h3>
                 <div className="space-y-3">
                   {book.aboutAuthor.achievements.map((achievement, index) => (
                     <div key={index} className="flex items-start space-x-3">
@@ -486,10 +643,15 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Autres livres</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Autres livres
+                </h3>
                 <div className="space-y-3">
                   {book.aboutAuthor.otherBooks.map((otherBook, index) => (
-                    <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
+                    <div
+                      key={index}
+                      className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer"
+                    >
                       <BookOpen className="h-5 w-5 text-primary-600" />
                       <span className="text-gray-700">{otherBook}</span>
                     </div>
@@ -501,20 +663,27 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
         )}
 
         {/* Reviews Tab */}
-        {activeTab === 'reviews' && (
+        {activeTab === "reviews" && (
           <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-xl font-semibold text-primary-900">Avis des lecteurs</h2>
+              <h2 className="text-xl font-semibold text-primary-900">
+                Avis des lecteurs
+              </h2>
               <div className="flex items-center space-x-2">
                 <Star className="h-5 w-5 text-gold-500 fill-current" />
                 <span className="text-lg font-bold">{book.rating}</span>
-                <span className="text-gray-600">({book.reviewsCount} avis)</span>
+                <span className="text-gray-600">
+                  ({book.reviewsCount} avis)
+                </span>
               </div>
             </div>
 
             <div className="space-y-6">
               {book.reviews.map((review) => (
-                <div key={review.id} className="border-b border-gray-100 pb-6 last:border-b-0">
+                <div
+                  key={review.id}
+                  className="border-b border-gray-100 pb-6 last:border-b-0"
+                >
                   <div className="flex items-start space-x-4">
                     <img
                       src={review.user.avatar}
@@ -523,9 +692,11 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
                     />
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-medium text-gray-900">{review.user.name}</h4>
+                        <h4 className="font-medium text-gray-900">
+                          {review.user.name}
+                        </h4>
                         <span className="text-sm text-gray-500">
-                          {new Date(review.date).toLocaleDateString('fr-FR')}
+                          {new Date(review.date).toLocaleDateString("fr-FR")}
                         </span>
                       </div>
                       <div className="flex items-center space-x-1 mb-3">
@@ -533,12 +704,16 @@ const BookDetail: React.FC<BookDetailProps> = ({ bookId, onBack, onRead }) => {
                           <Star
                             key={i}
                             className={`h-4 w-4 ${
-                              i < review.rating ? 'text-gold-500 fill-current' : 'text-gray-300'
+                              i < review.rating
+                                ? "text-gold-500 fill-current"
+                                : "text-gray-300"
                             }`}
                           />
                         ))}
                       </div>
-                      <p className="text-gray-700 leading-relaxed mb-3">{review.comment}</p>
+                      <p className="text-gray-700 leading-relaxed mb-3">
+                        {review.comment}
+                      </p>
                       <div className="flex items-center space-x-4 text-sm text-gray-500">
                         <button className="hover:text-primary-600 transition-colors">
                           Utile ({review.helpful})

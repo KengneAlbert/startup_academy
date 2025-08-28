@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { 
-  ArrowLeft, 
-  ExternalLink, 
-  Github, 
-  Globe, 
-  Heart, 
-  Share2, 
+import React, { useState } from "react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  Globe,
+  Heart,
+  Share2,
   MessageCircle,
   Star,
   Users,
@@ -37,8 +37,12 @@ import {
   Send,
   Plus,
   Edit,
-  Settings
-} from 'lucide-react';
+  Settings,
+} from "lucide-react";
+import Claudel from '../../assets/formations.jpg';
+import Formation from '../../assets/siege_cote_ivoire1.jpg';
+import Equipe from '../../assets/equipe.jpg';
+import DrClaudel from '../../assets/claudel.jpg';
 
 interface ProjectDetailProps {
   projectId: string;
@@ -46,227 +50,296 @@ interface ProjectDetailProps {
 }
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
 
   // Mock project data - in real app, fetch by projectId
   const project = {
     id: 1,
-    title: 'EcoTrack - Suivi Carbone Personnel',
-    tagline: 'Réduisez votre empreinte carbone avec gamification',
-    description: 'Application mobile pour suivre et réduire son empreinte carbone quotidienne avec gamification et conseils personnalisés.',
-    longDescription: 'EcoTrack est une application mobile innovante qui permet aux utilisateurs de suivre leur empreinte carbone quotidienne de manière ludique et engageante. Grâce à un système de gamification avancé, les utilisateurs sont motivés à adopter des comportements plus écologiques. L\'application propose des défis personnalisés, des conseils pratiques et un système de récompenses pour encourager les bonnes pratiques environnementales.',
-    category: 'mobile',
-    status: 'active',
-    stage: 'MVP',
+    title: "EcoTrack - Suivi Carbone Personnel",
+    tagline: "Réduisez votre empreinte carbone avec gamification",
+    description:
+      "Application mobile pour suivre et réduire son empreinte carbone quotidienne avec gamification et conseils personnalisés.",
+    longDescription:
+      "EcoTrack est une application mobile innovante qui permet aux utilisateurs de suivre leur empreinte carbone quotidienne de manière ludique et engageante. Grâce à un système de gamification avancé, les utilisateurs sont motivés à adopter des comportements plus écologiques. L'application propose des défis personnalisés, des conseils pratiques et un système de récompenses pour encourager les bonnes pratiques environnementales.",
+    category: "mobile",
+    status: "active",
+    stage: "MVP",
     featured: true,
-    image: 'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    image:
+      Formation,
     gallery: [
-      'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+      Formation,
+      Claudel,
+      Equipe,
     ],
     team: [
       {
         id: 1,
-        name: 'Alice Johnson',
-        role: 'Product Owner & UX Designer',
-        avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-        bio: 'Passionnée par l\'UX et l\'environnement, Alice dirige la vision produit d\'EcoTrack.',
-        skills: ['UX Design', 'Product Management', 'User Research'],
-        linkedin: 'https://linkedin.com/in/alice-johnson',
-        isFounder: true
+        name: "Dr. Fotso",
+        role: "Product Owner & UX Designer",
+        avatar: DrClaudel,
+        bio: "Passionné par l'UX et l'environnement, Fotso dirige la vision produit d'EcoTrack.",
+        skills: ["UX Design", "Product Management", "User Research"],
+        linkedin: "https://linkedin.com/in/fotso",
+        isFounder: true,
       },
       {
         id: 2,
-        name: 'Thomas Dubois',
-        role: 'Tech Lead & CTO',
-        avatar: 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-        bio: 'Développeur full-stack expert en React Native et architecture cloud.',
-        skills: ['React Native', 'Node.js', 'AWS', 'DevOps'],
-        linkedin: 'https://linkedin.com/in/thomas-dubois',
-        github: 'https://github.com/thomas-dubois',
-        isFounder: true
+        name: "Tchakounte Paul",
+        role: "Tech Lead & CTO",
+        avatar: DrClaudel,
+        bio: "Développeur full-stack expert en React Native et architecture cloud.",
+        skills: ["React Native", "Node.js", "AWS", "DevOps"],
+        linkedin: "https://linkedin.com/in/tchakounte-paul",
+        github: "https://github.com/tchakounte-paul",
+        isFounder: true,
       },
       {
         id: 3,
-        name: 'Sophie Laurent',
-        role: 'Marketing & Growth',
-        avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-        bio: 'Spécialiste en growth hacking et marketing digital pour startups.',
-        skills: ['Growth Hacking', 'Digital Marketing', 'Analytics'],
-        linkedin: 'https://linkedin.com/in/sophie-laurent',
-        twitter: 'https://twitter.com/sophie_growth',
-        isFounder: false
-      }
+        name: "Mireille Nguimbi",
+        role: "Marketing & Growth",
+        avatar: DrClaudel,
+        bio: "Spécialiste en growth hacking et marketing digital pour startups.",
+        skills: ["Growth Hacking", "Digital Marketing", "Analytics"],
+        linkedin: "https://linkedin.com/in/mireille-nguimbi",
+        twitter: "https://twitter.com/mireille_growth",
+        isFounder: false,
+      },
     ],
-    technologies: ['React Native', 'Node.js', 'MongoDB', 'AWS', 'Firebase', 'Stripe'],
-    startDate: '2024-01-15',
+    technologies: [
+      "React Native",
+      "Node.js",
+      "MongoDB",
+      "AWS",
+      "Firebase",
+      "Stripe",
+    ],
+    startDate: "2025-01-15",
     funding: {
-      total: '€50,000',
-      stage: 'Seed',
+      total: "50M FCFA",
+      stage: "Seed",
       investors: 3,
-      nextRound: 'Series A - Q3 2024'
+      nextRound: "Series A - Q3 2025",
     },
     metrics: {
       users: 1250,
-      revenue: '€12,000',
-      growth: '+45%',
-      retention: '78%',
-      downloads: '2.5K',
-      rating: 4.6
+      revenue: "12M FCFA",
+      growth: "+45%",
+      retention: "78%",
+      downloads: "2.5K",
+      rating: 4.6,
     },
     links: {
-      website: 'https://ecotrack.app',
-      github: 'https://github.com/startup-academy/ecotrack',
-      demo: 'https://demo.ecotrack.app',
-      appStore: 'https://apps.apple.com/app/ecotrack',
-      playStore: 'https://play.google.com/store/apps/details?id=com.ecotrack'
+      website: "https://ecotrack.app",
+      github: "https://github.com/startup-academy/ecotrack",
+      demo: "https://demo.ecotrack.app",
+      appStore: "https://apps.apple.com/app/ecotrack",
+      playStore: "https://play.google.com/store/apps/details?id=com.ecotrack",
     },
-    tags: ['Environnement', 'Mobile', 'B2C', 'Gamification', 'Sustainability', 'CleanTech'],
-    problem: 'Les gens veulent réduire leur empreinte carbone mais ne savent pas par où commencer ni comment mesurer leurs progrès de manière engageante.',
-    solution: 'Une app mobile qui gamifie le suivi carbone avec des défis personnalisés, des conseils pratiques et un système de récompenses motivant.',
-    targetMarket: 'Particuliers soucieux de l\'environnement, âgés de 25-45 ans, urbains, avec un revenu moyen-élevé.',
-    businessModel: 'Freemium avec abonnement premium (€4.99/mois) pour fonctionnalités avancées et coaching personnalisé.',
+    tags: [
+      "Environnement",
+      "Mobile",
+      "B2C",
+      "Gamification",
+      "Sustainability",
+      "CleanTech",
+    ],
+    problem:
+      "Les Camerounais veulent réduire leur empreinte carbone mais ne savent pas par où commencer ni comment mesurer leurs progrès de manière engageante.",
+    solution:
+      "Une app mobile qui gamifie le suivi carbone avec des défis personnalisés, des conseils pratiques et un système de récompenses motivant.",
+    targetMarket:
+      "Particuliers soucieux de l'environnement à Douala et Yaoundé, âgés de 25-45 ans, urbains, avec un revenu moyen-élevé.",
+    businessModel:
+      "Freemium avec abonnement premium (2500 FCFA/mois) pour fonctionnalités avancées et coaching personnalisé.",
     competition: [
-      { name: 'Carbon Tracker', strength: 'Précision des calculs', weakness: 'Interface peu engageante' },
-      { name: 'Green Habits', strength: 'Communauté active', weakness: 'Manque de gamification' },
-      { name: 'EcoLife', strength: 'Contenu éducatif', weakness: 'Pas de suivi personnalisé' }
+      {
+        name: "Carbon Tracker",
+        strength: "Précision des calculs",
+        weakness: "Interface peu engageante",
+      },
+      {
+        name: "Green Habits",
+        strength: "Communauté active",
+        weakness: "Manque de gamification",
+      },
+      {
+        name: "EcoLife",
+        strength: "Contenu éducatif",
+        weakness: "Pas de suivi personnalisé",
+      },
     ],
     roadmap: [
       {
-        quarter: 'Q1 2024',
-        status: 'completed',
-        milestones: ['MVP lancé', '1000 premiers utilisateurs', 'Feedback initial collecté']
+        quarter: "Q1 2025",
+        status: "completed",
+        milestones: [
+          "MVP lancé",
+          "1000 premiers utilisateurs",
+          "Feedback initial collecté",
+        ],
       },
       {
-        quarter: 'Q2 2024',
-        status: 'in-progress',
-        milestones: ['Système de récompenses', 'Intégration IoT', '5000 utilisateurs']
+        quarter: "Q2 2025",
+        status: "in-progress",
+        milestones: [
+          "Système de récompenses",
+          "Intégration IoT",
+          "5000 utilisateurs",
+        ],
       },
       {
-        quarter: 'Q3 2024',
-        status: 'planned',
-        milestones: ['Version premium', 'Partenariats entreprises', 'Levée Series A']
+        quarter: "Q3 2025",
+        status: "planned",
+        milestones: [
+          "Version premium",
+          "Partenariats entreprises",
+          "Levée Series A",
+        ],
       },
       {
-        quarter: 'Q4 2024',
-        status: 'planned',
-        milestones: ['Expansion européenne', '50K utilisateurs', 'Rentabilité']
-      }
+        quarter: "Q4 2025",
+        status: "planned",
+        milestones: [
+          "Expansion en Afrique Centrale",
+          "50K utilisateurs",
+          "Rentabilité",
+        ],
+      },
     ],
     updates: [
       {
         id: 1,
-        date: '2024-01-20',
-        title: 'Lancement de la version 2.0',
-        content: 'Nouvelle interface utilisateur et système de défis amélioré. Les utilisateurs peuvent maintenant créer des groupes et se challenger entre amis.',
-        author: 'Alice Johnson',
+        date: "2025-01-20",
+        title: "Lancement de la version 2.0",
+        content:
+          "Nouvelle interface utilisateur et système de défis amélioré. Les utilisateurs peuvent maintenant créer des groupes et se challenger entre amis.",
+        author: "Dr. Fotso",
         likes: 23,
-        comments: 8
+        comments: 8,
       },
       {
         id: 2,
-        date: '2024-01-15',
-        title: 'Partenariat avec GreenTech Solutions',
-        content: 'Nous sommes ravis d\'annoncer notre partenariat avec GreenTech Solutions pour intégrer leurs données de transport en temps réel.',
-        author: 'Thomas Dubois',
+        date: "2025-01-15",
+        title: "Partenariat avec GreenTech Cameroun",
+        content:
+          "Nous sommes ravis d'annoncer notre partenariat avec GreenTech Cameroun pour intégrer leurs données de transport en temps réel.",
+        author: "Tchakounte Paul",
         likes: 31,
-        comments: 12
+        comments: 12,
       },
       {
         id: 3,
-        date: '2024-01-10',
-        title: 'Milestone : 1000 utilisateurs !',
-        content: 'Nous avons atteint les 1000 utilisateurs actifs ! Merci à toute la communauté pour votre soutien et vos retours précieux.',
-        author: 'Sophie Laurent',
+        date: "2025-01-10",
+        title: "Milestone : 1000 utilisateurs !",
+        content:
+          "Nous avons atteint les 1000 utilisateurs actifs ! Merci à toute la communauté pour votre soutien et vos retours précieux.",
+        author: "Mireille Nguimbi",
         likes: 45,
-        comments: 18
-      }
+        comments: 18,
+      },
     ],
     comments: [
       {
         id: 1,
         user: {
-          name: 'Marcus Chen',
-          avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+          name: "Kamga Jean",
+          avatar: DrClaudel,
         },
-        content: 'Projet très prometteur ! L\'approche gamifiée est brillante pour engager les utilisateurs sur le long terme.',
-        date: '2024-01-18',
+        content:
+          "Projet très prometteur ! L'approche gamifiée est brillante pour engager les utilisateurs sur le long terme.",
+        date: "2025-01-18",
         likes: 12,
         replies: [
           {
             id: 11,
             user: {
-              name: 'Alice Johnson',
-              avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+              name: "Dr. Fotso",
+              avatar: DrClaudel,
             },
-            content: 'Merci Marcus ! Votre expertise en business model nous a beaucoup aidés.',
-            date: '2024-01-18'
-          }
-        ]
+            content:
+              "Merci Jean ! Votre expertise en business model nous a beaucoup aidés.",
+            date: "2025-01-18",
+          },
+        ],
       },
       {
         id: 2,
         user: {
-          name: 'Marie Dubois',
-          avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
+          name: "Nkeng Marie",
+          avatar: DrClaudel,
         },
-        content: 'Avez-vous pensé à intégrer des partenariats avec des entreprises pour le B2B ?',
-        date: '2024-01-17',
+        content:
+          "Avez-vous pensé à intégrer des partenariats avec des entreprises pour le B2B ?",
+        date: "2025-01-17",
         likes: 8,
-        replies: []
-      }
+        replies: [],
+      },
     ],
     likes: 89,
     views: 2341,
-    bookmarks: 34
+    bookmarks: 34,
   };
 
   const tabs = [
-    { id: 'overview', label: 'Aperçu', icon: Eye },
-    { id: 'team', label: 'Équipe', icon: Users },
-    { id: 'progress', label: 'Progression', icon: TrendingUp },
-    { id: 'updates', label: 'Actualités', icon: MessageCircle }
+    { id: "overview", label: "Aperçu", icon: Eye },
+    { id: "team", label: "Équipe", icon: Users },
+    { id: "progress", label: "Progression", icon: TrendingUp },
+    { id: "updates", label: "Actualités", icon: MessageCircle },
   ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-success-100 text-success-800';
-      case 'paused': return 'bg-warning-100 text-warning-800';
-      case 'completed': return 'bg-primary-100 text-primary-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case "active":
+        return "bg-success-100 text-success-800";
+      case "paused":
+        return "bg-warning-100 text-warning-800";
+      case "completed":
+        return "bg-primary-100 text-primary-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getStageColor = (stage: string) => {
     switch (stage) {
-      case 'Prototype': return 'bg-gray-100 text-gray-800';
-      case 'MVP': return 'bg-blue-100 text-blue-800';
-      case 'Seed': return 'bg-green-100 text-green-800';
-      case 'Growth': return 'bg-purple-100 text-purple-800';
-      case 'Exit': return 'bg-gold-100 text-gold-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case "Prototype":
+        return "bg-gray-100 text-gray-800";
+      case "MVP":
+        return "bg-blue-100 text-blue-800";
+      case "Seed":
+        return "bg-green-100 text-green-800";
+      case "Growth":
+        return "bg-purple-100 text-purple-800";
+      case "Exit":
+        return "bg-gold-100 text-gold-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getRoadmapStatusIcon = (status: string) => {
     switch (status) {
-      case 'completed': return <CheckCircle className="h-5 w-5 text-success-600" />;
-      case 'in-progress': return <Clock className="h-5 w-5 text-warning-600" />;
-      case 'planned': return <AlertCircle className="h-5 w-5 text-gray-400" />;
-      default: return <Info className="h-5 w-5 text-gray-400" />;
+      case "completed":
+        return <CheckCircle className="h-5 w-5 text-success-600" />;
+      case "in-progress":
+        return <Clock className="h-5 w-5 text-warning-600" />;
+      case "planned":
+        return <AlertCircle className="h-5 w-5 text-gray-400" />;
+      default:
+        return <Info className="h-5 w-5 text-gray-400" />;
     }
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
+    return new Date(dateString).toLocaleDateString("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
     });
   };
 
@@ -281,7 +354,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   const handleComment = () => {
     if (newComment.trim()) {
       // Add comment logic here
-      setNewComment('');
+      setNewComment("");
     }
   };
 
@@ -306,7 +379,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          
+
           {/* Featured Badge */}
           {project.featured && (
             <div className="absolute top-6 left-6">
@@ -319,17 +392,27 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
           {/* Status & Stage */}
           <div className="absolute top-6 right-6 flex space-x-2">
-            <span className={`px-3 py-1 text-sm font-medium rounded-full ${getStatusColor(project.status)}`}>
+            <span
+              className={`px-3 py-1 text-sm font-medium rounded-full ${getStatusColor(
+                project.status
+              )}`}
+            >
               Actif
             </span>
-            <span className={`px-3 py-1 text-sm font-medium rounded-full ${getStageColor(project.stage)}`}>
+            <span
+              className={`px-3 py-1 text-sm font-medium rounded-full ${getStageColor(
+                project.stage
+              )}`}
+            >
               {project.stage}
             </span>
           </div>
 
           {/* Project Info */}
           <div className="absolute bottom-6 left-6 right-6 text-white">
-            <h1 className="text-2xl md:text-4xl font-bold mb-2">{project.title}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold mb-2">
+              {project.title}
+            </h1>
             <p className="text-lg opacity-90 mb-4">{project.tagline}</p>
             <div className="flex flex-wrap items-center gap-4 text-sm">
               <div className="flex items-center space-x-1">
@@ -361,7 +444,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 <span>{project.views} vues</span>
               </div>
               <div className="flex items-center space-x-1">
-                <Heart className={`h-4 w-4 ${isLiked ? 'fill-current text-red-600' : ''}`} />
+                <Heart
+                  className={`h-4 w-4 ${
+                    isLiked ? "fill-current text-red-600" : ""
+                  }`}
+                />
                 <span>{project.likes + (isLiked ? 1 : 0)} likes</span>
               </div>
               <div className="flex items-center space-x-1">
@@ -379,11 +466,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 onClick={handleLike}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                   isLiked
-                    ? 'bg-red-100 text-red-600'
-                    : 'bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-600'
+                    ? "bg-red-100 text-red-600"
+                    : "bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-600"
                 }`}
               >
-                <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
+                <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} />
                 <span>J'aime</span>
               </button>
 
@@ -391,11 +478,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 onClick={handleBookmark}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                   isBookmarked
-                    ? 'bg-gold-100 text-gold-600'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gold-50 hover:text-gold-600'
+                    ? "bg-gold-100 text-gold-600"
+                    : "bg-gray-100 text-gray-700 hover:bg-gold-50 hover:text-gold-600"
                 }`}
               >
-                <Bookmark className={`h-4 w-4 ${isBookmarked ? 'fill-current' : ''}`} />
+                <Bookmark
+                  className={`h-4 w-4 ${isBookmarked ? "fill-current" : ""}`}
+                />
                 <span>Sauvegarder</span>
               </button>
 
@@ -425,8 +514,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium border-b-2 transition-all duration-300 whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'border-primary-600 text-primary-600 bg-primary-50'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                    ? "border-primary-600 text-primary-600 bg-primary-50"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -438,23 +527,31 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       </div>
 
       {/* Tab Content */}
-      <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+      <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
         {/* Overview Tab */}
-        {activeTab === 'overview' && (
+        {activeTab === "overview" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-8">
               {/* Description */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Description du projet</h2>
-                <p className="text-gray-700 leading-relaxed mb-6">{project.longDescription}</p>
-                
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Description du projet
+                </h2>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  {project.longDescription}
+                </p>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-primary-900 mb-3">Problème</h3>
+                    <h3 className="text-lg font-semibold text-primary-900 mb-3">
+                      Problème
+                    </h3>
                     <p className="text-gray-700 text-sm">{project.problem}</p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary-900 mb-3">Solution</h3>
+                    <h3 className="text-lg font-semibold text-primary-900 mb-3">
+                      Solution
+                    </h3>
                     <p className="text-gray-700 text-sm">{project.solution}</p>
                   </div>
                 </div>
@@ -462,34 +559,56 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
               {/* Business Model */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Modèle économique</h2>
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Modèle économique
+                </h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Marché cible</h3>
-                    <p className="text-gray-700 text-sm">{project.targetMarket}</p>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Marché cible
+                    </h3>
+                    <p className="text-gray-700 text-sm">
+                      {project.targetMarket}
+                    </p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Modèle de revenus</h3>
-                    <p className="text-gray-700 text-sm">{project.businessModel}</p>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Modèle de revenus
+                    </h3>
+                    <p className="text-gray-700 text-sm">
+                      {project.businessModel}
+                    </p>
                   </div>
                 </div>
               </div>
 
               {/* Competition */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Analyse concurrentielle</h2>
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Analyse concurrentielle
+                </h2>
                 <div className="space-y-4">
                   {project.competition.map((competitor, index) => (
                     <div key={index} className="p-4 bg-gray-50 rounded-xl">
-                      <h3 className="font-semibold text-gray-900 mb-2">{competitor.name}</h3>
+                      <h3 className="font-semibold text-gray-900 mb-2">
+                        {competitor.name}
+                      </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="font-medium text-success-600">Force : </span>
-                          <span className="text-gray-700">{competitor.strength}</span>
+                          <span className="font-medium text-success-600">
+                            Force :{" "}
+                          </span>
+                          <span className="text-gray-700">
+                            {competitor.strength}
+                          </span>
                         </div>
                         <div>
-                          <span className="font-medium text-error-600">Faiblesse : </span>
-                          <span className="text-gray-700">{competitor.weakness}</span>
+                          <span className="font-medium text-error-600">
+                            Faiblesse :{" "}
+                          </span>
+                          <span className="text-gray-700">
+                            {competitor.weakness}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -499,7 +618,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
               {/* Gallery */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h2 className="text-xl font-semibold text-primary-900 mb-4">Galerie</h2>
+                <h2 className="text-xl font-semibold text-primary-900 mb-4">
+                  Galerie
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {project.gallery.map((image, index) => (
                     <div key={index} className="relative group cursor-pointer">
@@ -519,22 +640,32 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             <div className="space-y-6">
               {/* Metrics */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Métriques clés</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Métriques clés
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-3 bg-blue-50 rounded-xl">
-                    <div className="text-lg font-bold text-blue-900">{project.metrics.users}</div>
+                    <div className="text-lg font-bold text-blue-900">
+                      {project.metrics.users}
+                    </div>
                     <div className="text-xs text-blue-700">Utilisateurs</div>
                   </div>
                   <div className="text-center p-3 bg-green-50 rounded-xl">
-                    <div className="text-lg font-bold text-green-900">{project.metrics.revenue}</div>
+                    <div className="text-lg font-bold text-green-900">
+                      {project.metrics.revenue}
+                    </div>
                     <div className="text-xs text-green-700">Revenus</div>
                   </div>
                   <div className="text-center p-3 bg-purple-50 rounded-xl">
-                    <div className="text-lg font-bold text-purple-900">{project.metrics.growth}</div>
+                    <div className="text-lg font-bold text-purple-900">
+                      {project.metrics.growth}
+                    </div>
                     <div className="text-xs text-purple-700">Croissance</div>
                   </div>
                   <div className="text-center p-3 bg-gold-50 rounded-xl">
-                    <div className="text-lg font-bold text-gold-900">{project.metrics.retention}</div>
+                    <div className="text-lg font-bold text-gold-900">
+                      {project.metrics.retention}
+                    </div>
                     <div className="text-xs text-gold-700">Rétention</div>
                   </div>
                 </div>
@@ -542,30 +673,44 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
               {/* Funding */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Financement</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Financement
+                </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Total levé</span>
-                    <span className="font-semibold">{project.funding.total}</span>
+                    <span className="font-semibold">
+                      {project.funding.total}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Stage</span>
-                    <span className="font-semibold">{project.funding.stage}</span>
+                    <span className="font-semibold">
+                      {project.funding.stage}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Investisseurs</span>
-                    <span className="font-semibold">{project.funding.investors}</span>
+                    <span className="font-semibold">
+                      {project.funding.investors}
+                    </span>
                   </div>
                   <div className="pt-3 border-t border-gray-100">
-                    <div className="text-sm text-gray-600 mb-1">Prochaine levée</div>
-                    <div className="font-semibold text-primary-600">{project.funding.nextRound}</div>
+                    <div className="text-sm text-gray-600 mb-1">
+                      Prochaine levée
+                    </div>
+                    <div className="font-semibold text-primary-600">
+                      {project.funding.nextRound}
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Technologies */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Technologies</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Technologies
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, index) => (
                     <span
@@ -580,7 +725,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
               {/* Links */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Liens</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Liens
+                </h3>
                 <div className="space-y-3">
                   {project.links.website && (
                     <a
@@ -590,7 +737,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       className="flex items-center space-x-3 p-3 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors group"
                     >
                       <Globe className="h-5 w-5 text-blue-600" />
-                      <span className="text-sm text-blue-700 group-hover:text-blue-800">Site web</span>
+                      <span className="text-sm text-blue-700 group-hover:text-blue-800">
+                        Site web
+                      </span>
                       <ExternalLink className="h-3 w-3 text-blue-500 ml-auto" />
                     </a>
                   )}
@@ -602,7 +751,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group"
                     >
                       <Github className="h-5 w-5 text-gray-600" />
-                      <span className="text-sm text-gray-700 group-hover:text-gray-800">GitHub</span>
+                      <span className="text-sm text-gray-700 group-hover:text-gray-800">
+                        GitHub
+                      </span>
                       <ExternalLink className="h-3 w-3 text-gray-500 ml-auto" />
                     </a>
                   )}
@@ -614,7 +765,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       className="flex items-center space-x-3 p-3 bg-green-50 rounded-xl hover:bg-green-100 transition-colors group"
                     >
                       <Play className="h-5 w-5 text-green-600" />
-                      <span className="text-sm text-green-700 group-hover:text-green-800">Démo</span>
+                      <span className="text-sm text-green-700 group-hover:text-green-800">
+                        Démo
+                      </span>
                       <ExternalLink className="h-3 w-3 text-green-500 ml-auto" />
                     </a>
                   )}
@@ -623,7 +776,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
               {/* Tags */}
               <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-primary-900 mb-4">Tags</h3>
+                <h3 className="text-lg font-semibold text-primary-900 mb-4">
+                  Tags
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, index) => (
                     <span
@@ -640,10 +795,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         )}
 
         {/* Team Tab */}
-        {activeTab === 'team' && (
+        {activeTab === "team" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.team.map((member) => (
-              <div key={member.id} className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6 hover:shadow-medium transition-all duration-300 hover:scale-105">
+              <div
+                key={member.id}
+                className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6 hover:shadow-medium transition-all duration-300 hover:scale-105"
+              >
                 <div className="text-center mb-4">
                   <div className="relative inline-block">
                     <img
@@ -657,7 +815,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       </div>
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold text-primary-900">{member.name}</h3>
+                  <h3 className="text-lg font-semibold text-primary-900">
+                    {member.name}
+                  </h3>
                   <p className="text-sm text-gray-600 mb-2">{member.role}</p>
                   {member.isFounder && (
                     <span className="inline-block px-2 py-1 bg-gold-100 text-gold-800 text-xs rounded-full">
@@ -666,10 +826,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   )}
                 </div>
 
-                <p className="text-sm text-gray-700 mb-4 text-center">{member.bio}</p>
+                <p className="text-sm text-gray-700 mb-4 text-center">
+                  {member.bio}
+                </p>
 
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-900 mb-2">Compétences</h4>
+                  <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                    Compétences
+                  </h4>
                   <div className="flex flex-wrap gap-1">
                     {member.skills.map((skill, skillIndex) => (
                       <span
@@ -720,11 +884,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         )}
 
         {/* Progress Tab */}
-        {activeTab === 'progress' && (
+        {activeTab === "progress" && (
           <div className="space-y-8">
             {/* Roadmap */}
             <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-              <h2 className="text-xl font-semibold text-primary-900 mb-6">Roadmap</h2>
+              <h2 className="text-xl font-semibold text-primary-900 mb-6">
+                Roadmap
+              </h2>
               <div className="space-y-6">
                 {project.roadmap.map((quarter, index) => (
                   <div key={index} className="flex items-start space-x-4">
@@ -733,19 +899,31 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <h3 className="font-semibold text-gray-900">{quarter.quarter}</h3>
-                        <span className={`px-2 py-1 text-xs rounded-full ${
-                          quarter.status === 'completed' ? 'bg-success-100 text-success-800' :
-                          quarter.status === 'in-progress' ? 'bg-warning-100 text-warning-800' :
-                          'bg-gray-100 text-gray-800'
-                        }`}>
-                          {quarter.status === 'completed' ? 'Terminé' :
-                           quarter.status === 'in-progress' ? 'En cours' : 'Planifié'}
+                        <h3 className="font-semibold text-gray-900">
+                          {quarter.quarter}
+                        </h3>
+                        <span
+                          className={`px-2 py-1 text-xs rounded-full ${
+                            quarter.status === "completed"
+                              ? "bg-success-100 text-success-800"
+                              : quarter.status === "in-progress"
+                              ? "bg-warning-100 text-warning-800"
+                              : "bg-gray-100 text-gray-800"
+                          }`}
+                        >
+                          {quarter.status === "completed"
+                            ? "Terminé"
+                            : quarter.status === "in-progress"
+                            ? "En cours"
+                            : "Planifié"}
                         </span>
                       </div>
                       <ul className="space-y-1">
                         {quarter.milestones.map((milestone, milestoneIndex) => (
-                          <li key={milestoneIndex} className="text-sm text-gray-700 flex items-center space-x-2">
+                          <li
+                            key={milestoneIndex}
+                            className="text-sm text-gray-700 flex items-center space-x-2"
+                          >
                             <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
                             <span>{milestone}</span>
                           </li>
@@ -759,31 +937,53 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
             {/* Metrics Evolution */}
             <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-              <h2 className="text-xl font-semibold text-primary-900 mb-6">Évolution des métriques</h2>
+              <h2 className="text-xl font-semibold text-primary-900 mb-6">
+                Évolution des métriques
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="text-center p-4 bg-blue-50 rounded-xl">
                   <BarChart3 className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-blue-900">{project.metrics.users}</div>
-                  <div className="text-sm text-blue-700">Utilisateurs actifs</div>
-                  <div className="text-xs text-green-600 mt-1">+45% ce mois</div>
+                  <div className="text-2xl font-bold text-blue-900">
+                    {project.metrics.users}
+                  </div>
+                  <div className="text-sm text-blue-700">
+                    Utilisateurs actifs
+                  </div>
+                  <div className="text-xs text-green-600 mt-1">
+                    +45% ce mois
+                  </div>
                 </div>
                 <div className="text-center p-4 bg-green-50 rounded-xl">
                   <DollarSign className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-green-900">{project.metrics.revenue}</div>
+                  <div className="text-2xl font-bold text-green-900">
+                    {project.metrics.revenue}
+                  </div>
                   <div className="text-sm text-green-700">Revenus mensuels</div>
-                  <div className="text-xs text-green-600 mt-1">+78% ce mois</div>
+                  <div className="text-xs text-green-600 mt-1">
+                    +78% ce mois
+                  </div>
                 </div>
                 <div className="text-center p-4 bg-purple-50 rounded-xl">
                   <TrendingUp className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-purple-900">{project.metrics.retention}</div>
-                  <div className="text-sm text-purple-700">Taux de rétention</div>
-                  <div className="text-xs text-green-600 mt-1">+12% ce mois</div>
+                  <div className="text-2xl font-bold text-purple-900">
+                    {project.metrics.retention}
+                  </div>
+                  <div className="text-sm text-purple-700">
+                    Taux de rétention
+                  </div>
+                  <div className="text-xs text-green-600 mt-1">
+                    +12% ce mois
+                  </div>
                 </div>
                 <div className="text-center p-4 bg-gold-50 rounded-xl">
                   <Star className="h-8 w-8 text-gold-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-gold-900">{project.metrics.rating}</div>
+                  <div className="text-2xl font-bold text-gold-900">
+                    {project.metrics.rating}
+                  </div>
                   <div className="text-sm text-gold-700">Note app stores</div>
-                  <div className="text-xs text-green-600 mt-1">+0.3 ce mois</div>
+                  <div className="text-xs text-green-600 mt-1">
+                    +0.3 ce mois
+                  </div>
                 </div>
               </div>
             </div>
@@ -791,26 +991,37 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         )}
 
         {/* Updates Tab */}
-        {activeTab === 'updates' && (
+        {activeTab === "updates" && (
           <div className="space-y-8">
             {/* Project Updates */}
             <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-              <h2 className="text-xl font-semibold text-primary-900 mb-6">Actualités du projet</h2>
+              <h2 className="text-xl font-semibold text-primary-900 mb-6">
+                Actualités du projet
+              </h2>
               <div className="space-y-6">
                 {project.updates.map((update) => (
-                  <div key={update.id} className="border-b border-gray-100 pb-6 last:border-b-0">
+                  <div
+                    key={update.id}
+                    className="border-b border-gray-100 pb-6 last:border-b-0"
+                  >
                     <div className="flex items-start space-x-4">
                       <div className="bg-primary-100 p-2 rounded-xl">
                         <MessageCircle className="h-5 w-5 text-primary-600" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
-                          <h3 className="font-semibold text-gray-900">{update.title}</h3>
-                          <span className="text-sm text-gray-500">{formatDate(update.date)}</span>
+                          <h3 className="font-semibold text-gray-900">
+                            {update.title}
+                          </h3>
+                          <span className="text-sm text-gray-500">
+                            {formatDate(update.date)}
+                          </span>
                         </div>
                         <p className="text-gray-700 mb-3">{update.content}</p>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-500">Par {update.author}</span>
+                          <span className="text-sm text-gray-500">
+                            Par {update.author}
+                          </span>
                           <div className="flex items-center space-x-4 text-sm text-gray-500">
                             <div className="flex items-center space-x-1">
                               <ThumbsUp className="h-4 w-4" />
@@ -831,8 +1042,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
             {/* Comments Section */}
             <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
-              <h2 className="text-xl font-semibold text-primary-900 mb-6">Commentaires</h2>
-              
+              <h2 className="text-xl font-semibold text-primary-900 mb-6">
+                Commentaires
+              </h2>
+
               {/* Add Comment */}
               <div className="mb-6 p-4 bg-gray-50 rounded-xl">
                 <textarea
@@ -866,8 +1079,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-medium text-gray-900">{comment.user.name}</h4>
-                          <span className="text-sm text-gray-500">{formatDate(comment.date)}</span>
+                          <h4 className="font-medium text-gray-900">
+                            {comment.user.name}
+                          </h4>
+                          <span className="text-sm text-gray-500">
+                            {formatDate(comment.date)}
+                          </span>
                         </div>
                         <p className="text-gray-700 mb-3">{comment.content}</p>
                         <div className="flex items-center space-x-4 text-sm text-gray-500">
@@ -885,7 +1102,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     {comment.replies && comment.replies.length > 0 && (
                       <div className="ml-14 space-y-4">
                         {comment.replies.map((reply) => (
-                          <div key={reply.id} className="flex items-start space-x-4">
+                          <div
+                            key={reply.id}
+                            className="flex items-start space-x-4"
+                          >
                             <img
                               src={reply.user.avatar}
                               alt={reply.user.name}
@@ -893,10 +1113,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                             />
                             <div className="flex-1">
                               <div className="flex items-center justify-between mb-2">
-                                <h5 className="font-medium text-gray-900 text-sm">{reply.user.name}</h5>
-                                <span className="text-xs text-gray-500">{formatDate(reply.date)}</span>
+                                <h5 className="font-medium text-gray-900 text-sm">
+                                  {reply.user.name}
+                                </h5>
+                                <span className="text-xs text-gray-500">
+                                  {formatDate(reply.date)}
+                                </span>
                               </div>
-                              <p className="text-gray-700 text-sm">{reply.content}</p>
+                              <p className="text-gray-700 text-sm">
+                                {reply.content}
+                              </p>
                             </div>
                           </div>
                         ))}
@@ -937,7 +1163,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   placeholder="Objet de votre message"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Message

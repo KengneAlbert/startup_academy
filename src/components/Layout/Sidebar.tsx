@@ -8,16 +8,14 @@ import {
   User,
   Settings,
   LogOut,
-  GraduationCap,
   ChevronLeft,
   ChevronRight,
   Plus,
-  Bell,
-  Search,
   Target,
   Calendar
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import Logo from '../../assets/startup_logo.jpg'
 
 interface SidebarProps {
   currentPage: string;
@@ -57,15 +55,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-100">
         {!isCollapsed && (
-          <div className="flex items-center space-x-2">
-            <div className="relative">
-              <GraduationCap className="h-8 w-8 text-primary-900" />
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-gold-500 rounded-full opacity-20 blur"></div>
-            </div>
+            <div className="flex items-center space-x-2">
+            <img src={Logo} alt="Startup Academy" className="h-8 w-auto" />
             <span className="text-lg font-bold bg-gradient-to-r from-primary-900 to-primary-700 bg-clip-text text-transparent">
               Startup Academy
             </span>
-          </div>
+            </div>
         )}
         <button
           onClick={onToggleCollapse}

@@ -10,13 +10,12 @@ import {
   LogOut,
   Bell,
   Search,
-  Menu,
-  X,
   GraduationCap,
   ChevronDown,
   Plus
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import Logo from '../../assets/startup_logo.jpg'
 
 interface NavigationProps {
   currentPage: string;
@@ -64,13 +63,13 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center group cursor-pointer">
-                <div className="relative">
-                  <GraduationCap className="h-8 w-8 text-primary-900 group-hover:text-primary-700 transition-colors duration-300" />
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-gold-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur"></div>
-                </div>
-                <span className="ml-3 text-xl font-bold bg-gradient-to-r from-primary-900 to-primary-700 bg-clip-text text-transparent">
-                  Startup Academy
-                </span>
+              <div className="relative">
+                <img src={Logo} alt="Startup Academy Logo" className="h-8 w-auto" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-gold-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur"></div>
+              </div>
+              <span className="ml-3 text-xl font-bold bg-gradient-to-r from-primary-900 to-primary-700 bg-clip-text text-transparent">
+                Startup Academy
+              </span>
               </div>
             </div>
 

@@ -21,7 +21,7 @@ const LessonPlayer: React.FC<LessonPlayerProps> = ({ courseId, lessonId, onBack 
     description: 'Introduction complète au Business Model Canvas, son histoire et ses applications pratiques dans le monde entrepreneurial.',
     duration: '12:30',
     type: 'video',
-    videoUrl: 'https://example.com/video.mp4',
+    videoUrl: 'https://www.youtube.com/watch?v=9gKDCFy6tGw',
     completed: false,
     notes: [
       {

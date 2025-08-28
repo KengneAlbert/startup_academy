@@ -12,6 +12,18 @@ import {
 } from 'lucide-react';
 import BookDetail from './BookDetail';
 import BookReader from './BookReader';
+import Livre1 from '../../assets/livres/cent_idees_de_projets.jpg';
+import Livre2 from '../../assets/livres/corona_virus.jpg';
+import Livre3 from '../../assets/livres/creer_sa_structure_hospitaliere.jpg';
+import Livre4 from '../../assets/livres/education_pour_enfants.jpg';
+import Livre5 from '../../assets/livres/entreprendre_et_investir_autrement.jpg';
+import Livre6 from '../../assets/livres/femme_patrone.jpg';
+import Livre7 from '../../assets/livres/investisseur_immobilier.jpg';
+import Livre8 from '../../assets/livres/la_fonction_marketing_a_hopital.jpg';
+import Livre9 from '../../assets/livres/le_jeune_entrepreneur_africain_tome_un.jpg';
+import Livre10 from '../../assets/livres/le_prix_de_la_reussite.jpg';
+import Livre11 from '../../assets/livres/les_secrets_des_meilleurs_vendeurs.jpg';
+import Livre12 from '../../assets/livres/marketing_relationnel.jpg';
 
 const LibraryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,11 +34,11 @@ const LibraryPage: React.FC = () => {
   const books = [
     {
       id: 1,
-      title: 'The Lean Startup',
-      author: 'Eric Ries',
+      title: 'Le jeune entrepreneur africain',
+      author: 'Claudel Noubisie',
       category: 'business',
       description: 'Une approche révolutionnaire pour créer des entreprises plus rapidement et plus intelligemment',
-      thumbnail: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      thumbnail: Livre9,
       pdfUrl: '#',
       downloadCount: 1247,
       rating: 4.8,
@@ -35,11 +47,11 @@ const LibraryPage: React.FC = () => {
     },
     {
       id: 2,
-      title: 'Zero to One',
-      author: 'Peter Thiel',
+      title: 'Tontine Structurelle en Afrique',
+      author: 'Claudel Noubissie',
       category: 'business',
-      description: 'Notes sur les startups, ou comment construire l\'avenir',
-      thumbnail: 'https://images.pexels.com/photos/1370298/pexels-photo-1370298.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      description: 'Comment les tontines peuvent transformer le financement des PME en Afrique',
+      thumbnail: Livre5,
       pdfUrl: '#',
       downloadCount: 892,
       rating: 4.6,
@@ -48,24 +60,24 @@ const LibraryPage: React.FC = () => {
     },
     {
       id: 3,
-      title: 'The Innovator\'s Dilemma',
-      author: 'Clayton M. Christensen',
-      category: 'business',
-      description: 'Quand les nouvelles technologies bouleversent l\'économie',
-      thumbnail: 'https://images.pexels.com/photos/1329571/pexels-photo-1329571.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      title: 'Corona Virus',
+      author: 'Dr Claudel Noubissie',
+      category: 'santé',
+      description: 'Une pendémie mondiale et son impact sur la santé publique',
+      thumbnail: Livre2,
       pdfUrl: '#',
       downloadCount: 634,
       rating: 4.7,
-      publishedDate: '1997-01-01',
+      publishedDate: '2020-01-01',
       pages: 288
     },
     {
       id: 4,
-      title: 'Venture Deals',
-      author: 'Brad Feld & Jason Mendelson',
-      category: 'finance',
-      description: 'Soyez plus intelligent que votre avocat et votre venture capitalist',
-      thumbnail: 'https://images.pexels.com/photos/1319854/pexels-photo-1319854.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      title: "Guide pratique pour l'éducation des enfants",
+      author: 'Claudel Noubissie',
+      category: 'education',
+      description: 'Stratégies efficaces pour élever des enfants heureux et en bonne santé',
+      thumbnail: Livre4,
       pdfUrl: '#',
       downloadCount: 567,
       rating: 4.5,
@@ -74,37 +86,37 @@ const LibraryPage: React.FC = () => {
     },
     {
       id: 5,
-      title: 'Crossing the Chasm',
-      author: 'Geoffrey A. Moore',
-      category: 'marketing',
-      description: 'Marketer et vendre des produits high-tech à des clients traditionnels',
-      thumbnail: 'https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      title: 'La Femme du Patron',
+      author: 'Yael Motaze',
+      category: 'couple',
+      description: 'Récit inspirant d\'une femme qui soutient son mari entrepreneur',
+      thumbnail: Livre6,
       pdfUrl: '#',
       downloadCount: 423,
       rating: 4.4,
-      publishedDate: '2014-07-01',
+      publishedDate: '2024-07-01',
       pages: 272
     },
     {
       id: 6,
-      title: 'The Hard Thing About Hard Things',
-      author: 'Ben Horowitz',
-      category: 'business',
-      description: 'Construire une entreprise quand il n\'y a pas de solution simple',
-      thumbnail: 'https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      title: 'Guide Pratique de l\'Investisseur Immobilier',
+      author: 'Augustin Noubissie',
+      category: 'Immobilier',
+      description: 'Stratégies pour réussir dans l\'investissement immobilier en Afrique',
+      thumbnail: Livre7,
       pdfUrl: '#',
       downloadCount: 789,
       rating: 4.6,
-      publishedDate: '2014-03-04',
+      publishedDate: '2019-03-04',
       pages: 304
     },
     {
       id: 7,
-      title: 'Clean Code',
-      author: 'Robert C. Martin',
-      category: 'tech',
-      description: 'Manuel de l\'artisan logiciel',
-      thumbnail: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      title: 'Marketing Relationnel',
+      author: 'Claudel Noubissie',
+      category: 'marketing',
+      description: 'Techniques avancées pour fidéliser les clients et augmenter les ventes',
+      thumbnail: Livre12,
       pdfUrl: '#',
       downloadCount: 1123,
       rating: 4.9,
@@ -113,11 +125,11 @@ const LibraryPage: React.FC = () => {
     },
     {
       id: 8,
-      title: 'Angel Investing',
-      author: 'Jason Calacanis',
-      category: 'finance',
-      description: 'Comment devenir un investisseur providentiel',
-      thumbnail: 'https://images.pexels.com/photos/1181325/pexels-photo-1181325.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&fit=crop',
+      title: 'Le prix de la réussite',
+      author: 'Claudel Noubissie',
+      category: 'business',
+      description: 'Les sacrifices nécessaires pour atteindre le succès entrepreneurial',
+      thumbnail: Livre10,
       pdfUrl: '#',
       downloadCount: 345,
       rating: 4.3,

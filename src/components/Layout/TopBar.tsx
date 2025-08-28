@@ -3,8 +3,6 @@ import {
   Search, 
   Bell, 
   Menu,
-  X,
-  GraduationCap,
   MessageCircle,
   User,
   Plus,
@@ -13,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import MobileSidebar from './MobileSidebar';
+import Logo from '../../assets/startup_logo.jpg'
 
 interface TopBarProps {
   currentPage: string;
@@ -117,7 +116,7 @@ const TopBar: React.FC<TopBarProps> = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <GraduationCap className="h-6 w-6 text-primary-900" />
+              <img src={Logo} alt="Logo" className="h-8 w-auto" />
               <span className="text-lg font-bold text-primary-900">Startup Academy</span>
             </div>
             

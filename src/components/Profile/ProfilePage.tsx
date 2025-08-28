@@ -34,6 +34,7 @@ import {
   FileText
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import Claudel from '../../assets/formations.jpg';
 
 const ProfilePage: React.FC = () => {
   const { user } = useAuth();
@@ -44,175 +45,175 @@ const ProfilePage: React.FC = () => {
   // Mock data pour le profil complet
   const profileData = {
     ...user,
-    coverImage: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop',
-    company: 'TechFlow Solutions',
-    website: 'https://alicejohnson.design',
-    phone: '+33 6 12 34 56 78',
-    email: user?.email || 'alice@techflow.com',
+    coverImage: Claudel,
+    company: 'CamerTech',
+    website: 'https://josephkamga.dev',
+    phone: '+237 6 91 23 45 67',
+    email: user?.email || 'joseph@camertech.cm',
     followers: 1247,
     following: 456,
     connections: 892,
     profileViews: 2341,
     socialLinks: {
-      linkedin: 'https://linkedin.com/in/alice-johnson',
-      twitter: 'https://twitter.com/alice_ux',
-      github: 'https://github.com/alice-johnson',
-      website: 'https://alicejohnson.design'
+      linkedin: 'https://linkedin.com/in/joseph-kamga',
+      twitter: 'https://twitter.com/joseph_dev', 
+      github: 'https://github.com/joseph-kamga',
+      website: 'https://josephkamga.dev'
     },
     services: [
       {
         id: 1,
-        title: 'Audit UX/UI',
-        description: 'Analyse complète de votre interface utilisateur avec recommandations détaillées',
-        price: '€500-1500',
-        duration: '1-2 semaines',
-        category: 'UX Design'
+        title: 'Développement Web',
+        description: 'Création de sites web et applications modernes avec les dernières technologies',
+        price: 'FCFA 300,000-800,000',
+        duration: '2-4 semaines',
+        category: 'Développement'
       },
       {
         id: 2,
-        title: 'Design System',
-        description: 'Création d\'un système de design cohérent pour votre produit',
-        price: '€2000-5000',
-        duration: '3-4 semaines',
-        category: 'Design System'
+        title: 'Formation Développement',
+        description: 'Formation intensive en développement web et mobile pour débutants et professionnels',
+        price: 'FCFA 50,000/jour',
+        duration: '1-2 semaines',
+        category: 'Formation'
       },
       {
         id: 3,
-        title: 'Formation Équipe',
-        description: 'Formation de vos équipes aux bonnes pratiques UX/UI',
-        price: '€800/jour',
-        duration: '1-3 jours',
-        category: 'Formation'
+        title: 'Consultation Technique',
+        description: 'Conseil et expertise technique pour vos projets digitaux',
+        price: 'FCFA 25,000/heure',
+        duration: 'Variable',
+        category: 'Conseil'
       }
     ],
     experience: [
       {
         id: 1,
-        title: 'Senior UX Designer',
-        company: 'TechFlow Solutions',
-        location: 'Paris, France',
+        title: 'Lead Développeur',
+        company: 'CamerTech',
+        location: 'Douala, Cameroun',
         startDate: '2022-01',
         endDate: null,
         current: true,
-        description: 'Lead UX pour les produits B2B, gestion d\'une équipe de 4 designers, refonte complète de l\'interface utilisateur.',
+        description: 'Direction technique des projets web, gestion d\'équipe de développeurs, architecture logicielle.',
         achievements: [
-          'Augmentation de 40% de la satisfaction utilisateur',
-          'Réduction de 60% du temps de formation',
-          'Mise en place du design system'
+          'Déploiement de 10+ applications à grande échelle',
+          'Mise en place de processus de développement agile',
+          'Formation de 20+ développeurs juniors'
         ]
       },
       {
         id: 2,
-        title: 'UX Designer',
-        company: 'StartupLab',
-        location: 'Lyon, France',
+        title: 'Développeur Full Stack',
+        company: 'Digital Africa',
+        location: 'Yaoundé, Cameroun',
         startDate: '2019-06',
         endDate: '2021-12',
         current: false,
-        description: 'Design d\'interfaces pour startups tech, recherche utilisateur, prototypage.',
+        description: 'Développement d\'applications web et mobiles pour clients locaux et internationaux.',
         achievements: [
-          'Design de 15+ applications mobiles',
-          'Conduite de 200+ entretiens utilisateurs',
-          'Certification Google UX Design'
+          'Développement de 8 applications majeures',
+          'Implémentation de solutions de paiement mobile',
+          'Optimisation des performances des applications'
         ]
       },
       {
         id: 3,
-        title: 'Junior Designer',
-        company: 'Creative Agency',
-        location: 'Marseille, France',
+        title: 'Développeur Junior',
+        company: 'StartupCam',
+        location: 'Buea, Cameroun',
         startDate: '2017-09',
         endDate: '2019-05',
         current: false,
-        description: 'Design graphique et web, création de supports marketing.',
+        description: 'Développement frontend et backend pour startups locales.',
         achievements: [
-          'Création de 50+ identités visuelles',
-          'Gestion de projets clients',
-          'Formation en design thinking'
+          'Création de 5 sites web commerciaux',
+          'Intégration de systèmes de gestion',
+          'Support technique client'
         ]
       }
     ],
     education: [
       {
         id: 1,
-        degree: 'Master UX Design',
-        school: 'École Supérieure de Design',
-        location: 'Paris, France',
+        degree: 'Master en Génie Logiciel',
+        school: 'Université de Yaoundé I',
+        location: 'Yaoundé, Cameroun',
         year: '2017',
-        description: 'Spécialisation en design d\'interaction et recherche utilisateur'
+        description: 'Spécialisation en développement d\'applications et systèmes distribués'
       },
       {
         id: 2,
-        degree: 'Licence Design Graphique',
-        school: 'Université des Arts',
-        location: 'Lyon, France',
+        degree: 'Licence en Informatique',
+        school: 'Institut Universitaire de Technologie',
+        location: 'Douala, Cameroun',
         year: '2015',
-        description: 'Formation complète en design graphique et communication visuelle'
+        description: 'Formation en programmation et systèmes d\'information'
       }
     ],
     certifications: [
       {
         id: 1,
-        name: 'Google UX Design Certificate',
-        issuer: 'Google',
+        name: 'AWS Certified Developer',
+        issuer: 'Amazon Web Services',
         date: '2023',
-        credentialId: 'GUX-2023-001'
+        credentialId: 'AWS-2023-001'
       },
       {
         id: 2,
-        name: 'Certified Usability Analyst',
-        issuer: 'Human Factors International',
+        name: 'React Developer Certification',
+        issuer: 'Meta',
         date: '2022',
-        credentialId: 'CUA-2022-456'
+        credentialId: 'RDC-2022-456'
       }
     ],
     portfolio: [
       {
         id: 1,
-        title: 'App Mobile E-commerce',
-        description: 'Refonte complète de l\'expérience mobile pour une plateforme e-commerce',
+        title: 'Application Mobile MTN MoMo',
+        description: 'Application de paiement mobile pour le marché camerounais',
         image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
         category: 'Mobile App',
         year: '2023',
-        client: 'ShopFlow'
+        client: 'MTN Cameroun'
       },
       {
         id: 2,
-        title: 'Dashboard Analytics',
-        description: 'Interface de visualisation de données pour startup fintech',
+        title: 'Plateforme E-commerce',
+        description: 'Site de vente en ligne pour produits locaux',
         image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
         category: 'Web App',
         year: '2023',
-        client: 'FinTech Pro'
+        client: 'CamerMarket'
       },
       {
         id: 3,
-        title: 'Site Web Corporate',
-        description: 'Refonte du site institutionnel avec focus sur la conversion',
+        title: 'Système de Gestion Scolaire',
+        description: 'Application web pour la gestion des écoles',
         image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-        category: 'Website',
+        category: 'Web App',
         year: '2022',
-        client: 'TechCorp'
+        client: 'Ministère de l\'Éducation'
       }
     ],
     testimonials: [
       {
         id: 1,
-        author: 'Marcus Chen',
-        role: 'CEO, TechFlow',
-        avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-        content: 'Alice a transformé notre produit. Son approche méthodique et sa créativité ont permis d\'améliorer significativement l\'expérience utilisateur.',
+        author: 'Paul Biya',
+        role: 'Directeur, CamerTech',
+        avatar: Claudel,
+        content: 'Joseph a révolutionné notre approche du développement. Son expertise technique et sa vision ont grandement contribué à notre succès.',
         rating: 5,
-        date: '2023-12'
+        date: '2025-12'
       },
       {
         id: 2,
-        author: 'Sophie Laurent',
-        role: 'Product Manager, StartupLab',
-        avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-        content: 'Collaboration exceptionnelle ! Alice comprend parfaitement les enjeux business et traduit les besoins en solutions design élégantes.',
+        author: 'Marie Tchamba',
+        role: 'CEO, Digital Africa',
+        avatar: Claudel,
+        content: 'Un excellent développeur avec une forte éthique de travail. Les solutions qu\'il propose sont toujours innovantes et efficaces.',
         rating: 5,
-        date: '2023-11'
+        date: '2025-11'
       }
     ]
   };
