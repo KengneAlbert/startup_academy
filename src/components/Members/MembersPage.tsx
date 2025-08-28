@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MemberProfile from './MemberProfile';
 import {
   Search,
   Filter,
@@ -27,6 +28,8 @@ const MembersPage: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState("all");
   const [selectedSkill, setSelectedSkill] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [currentView, setCurrentView] = useState<'list' | 'profile'>('list');
+  const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
 
   const members = [
     {
@@ -286,6 +289,26 @@ const MembersPage: React.FC = () => {
     }
   };
 
+  const handleMemberClick = (memberId: string) => {
+    setSelectedMemberId(memberId);
+    setCurrentView('profile');
+  };
+
+  const handleBackToList = () => {
+    setCurrentView('list');
+    setSelectedMemberId(null);
+  };
+
+  // Render member profile view
+  if (currentView === 'profile' && selectedMemberId) {
+    return (
+      <MemberProfile 
+        memberId={selectedMemberId} 
+        onBack={handleBackToList}
+      />
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8 animate-fade-in">
       {/* Header */}
@@ -517,8 +540,14 @@ const MembersPage: React.FC = () => {
                     <MessageCircle className="h-4 w-4" />
                     <span>Contacter</span>
                   </button>
-                  <button className="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105">
-                    <UserPlus className="h-4 w-4" />
+                  <button 
+                    onClick={() => handleMemberClick(member.id.toString())}
+                    className="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105"
+                  >
+                    onClick={() => handleMemberClick(member.id.toString())}
+                    className="px-3 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105"
+                  >
+                    <Eye className="h-4 w-4" />
                   </button>
                 </div>
               </>
