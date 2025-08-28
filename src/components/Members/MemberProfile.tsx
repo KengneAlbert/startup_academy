@@ -66,7 +66,7 @@ const MemberProfile: React.FC<MemberProfileProps> = ({ memberId, onBack }) => {
       "Mobile Design",
       "Usability Testing"
     ],
-    experience: "8 ans",
+    experienceYears: "8 ans",
     avatar: "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop",
     coverImage: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     rating: 4.9,
@@ -144,7 +144,7 @@ const MemberProfile: React.FC<MemberProfileProps> = ({ memberId, onBack }) => {
         client: "PayTech Solutions"
       }
     ],
-    experience: [
+    experienceHistory: [
       {
         id: 1,
         title: "Senior UX Designer",
@@ -544,7 +544,7 @@ const MemberProfile: React.FC<MemberProfileProps> = ({ memberId, onBack }) => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600">Expérience</span>
-                    <span className="font-semibold">{member.experience}</span>
+                    <span className="font-semibold">{member.experienceYears}</span>
                   </div>
                 </div>
               </div>
@@ -629,9 +629,9 @@ const MemberProfile: React.FC<MemberProfileProps> = ({ memberId, onBack }) => {
         {activeTab === 'experience' && (
           <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-6">
             <div className="space-y-8">
-              {member.experience.map((exp, index) => (
+              {member.experienceHistory.map((exp, index) => (
                 <div key={exp.id} className="relative">
-                  {index !== member.experience.length - 1 && (
+                  {index !== member.experienceHistory.length - 1 && (
                     <div className="absolute left-6 top-16 w-0.5 h-full bg-gray-200"></div>
                   )}
                   <div className="flex items-start space-x-4">
